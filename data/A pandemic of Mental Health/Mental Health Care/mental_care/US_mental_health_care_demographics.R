@@ -1,0 +1,75 @@
+# Import libraries
+library(ggplot2)
+library(plotly)
+library(ggthemes)
+
+# Read in CSV to variable for age filter
+prescript_age <- read.csv("prescript_age.csv")
+coun_or_therap_age <- read.csv("coun_or_therap_age.csv")
+needed_coun_or_therap_age <- read.csv("needed_coun_or_therap_age.csv")
+
+# Read in CSV to variable for gender filter
+prescript_gender <- read.csv("prescript_gender.csv")
+coun_or_therap_gender <- read.csv("coun_or_therap_gender.csv")
+needed_coun_or_therap_gender <- read.csv("needed_coun_or_therap_gender.csv")
+
+# Read in CSV to variable for edu filter
+prescript_edu <- read.csv("prescript_edu.csv")
+coun_or_therap_edu <- read.csv("coun_or_therap_edu.csv")
+needed_coun_or_therap_edu <- read.csv("needed_coun_or_therap_edu.csv")
+
+# Read in CSV to variable for race filter
+prescript_race <- read.csv("prescript_race.csv")
+coun_or_therap_race <- read.csv("coun_or_therap_race.csv")
+needed_coun_or_therap_race <- read.csv("needed_coun_or_therap_race.csv")
+
+# Read in CSV to variable for state filter
+prescript_state <- read.csv("prescript_state.csv")
+coun_or_therap_state <- read.csv("coun_or_therap_state.csv")
+needed_coun_or_therap_state <- read.csv("needed_coun_or_therap_state.csv")
+
+# General function created to plot the anxiety/depression rates by different filters in U.S.
+general_fun <- function(indicator, filter, dataset, input) {
+  
+  # Converts character date into numeric date
+  dataset$date1 <- as.character(dataset$period_end)
+  dataset$date2 <- as.Date(dataset$date1, "%m/%d/%y")
+  
+  # Graphs the lines on a plot for a specified data set
+  graph <- ggplot(dataset[dataset$group %in% input,], aes(date2, value))+
+    geom_line(aes(colour = group))+
+    labs(title = paste(indicator, "over Time"),
+         x = "Date",
+         y = "Percentage",
+         color = filter)+
+    theme_economist()
+  ggplotly(graph)
+  
+}
+
+# Function calls for age filter
+general_fun("Medications for Mental Health", "Age", prescript_age, c("18 - 29 years", "30 - 39 years", "40 - 49 years", "50 - 59 years", "60 - 69 years", "70 - 79 years", "80 years and above"))
+general_fun("Counseling for Mental Health", "Age", coun_or_therap_age, c("18 - 29 years", "30 - 39 years", "40 - 49 years", "50 - 59 years", "60 - 69 years", "70 - 79 years", "80 years and above"))
+general_fun("Needed Counseling", "Age", needed_coun_or_therap_age, c("18 - 29 years", "30 - 39 years", "40 - 49 years", "50 - 59 years", "60 - 69 years", "70 - 79 years", "80 years and above"))
+
+# Function calls for race filter
+general_fun("Took Prescription Medication for Mental Health", "Race", prescript_race, c("Hispanic or Latino", "Non-Hispanic White, single race", "Non-Hispanic Black, single race", "Non-Hispanic Asian, single race"))
+general_fun("Received Counseling or Therapy", "Race", coun_or_therap_race, c("Hispanic or Latino", "Non-Hispanic White, single race", "Non-Hispanic Black, single race", "Non-Hispanic Asian, single race"))
+general_fun("Needed Counseling or Therapy But Did Not Get It", "Race", needed_coun_or_therap_race, c("Hispanic or Latino", "Non-Hispanic White, single race", "Non-Hispanic Black, single race", "Non-Hispanic Asian, single race"))
+
+# Function calls for gender filter
+general_fun("Took Prescription Medication for Mental Health", "Gender", prescript_gender, c("Male", "Female"))
+general_fun("Received Counseling or Therapy", "Gender", coun_or_therap_gender, c("Male", "Female"))
+general_fun("Needed Counseling or Therapy But Did Not Get It", "Gender", needed_coun_or_therap_gender, c("Male", "Female"))
+
+# Function calls for education filter
+general_fun("Took Prescription Medication for Mental Health", "Education", prescript_edu, c("High school diploma or GED", "Bachelor's degree or higher"))
+general_fun("Received Counseling or Therapy", "Education", coun_or_therap_edu, c("High school diploma or GED", "Bachelor's degree or higher"))
+general_fun("Needed Counseling or Therapy But Did Not Get It", "Education", needed_coun_or_therap_edu, c("High school diploma or GED", "Bachelor's degree or higher"))
+
+# Function calls for state filter
+general_fun("Took Prescription Medication for Mental Health", "State", prescript_state, c("Alabama"))
+general_fun("Received Counseling or Therapy", "State", coun_or_therap_state, c("California", "Utah", "Virginia", "Florida"))
+general_fun("Needed Counseling or Therapy But Did Not Get It", "State", needed_coun_or_therap_state, c("California", "Florida"))
+
+
