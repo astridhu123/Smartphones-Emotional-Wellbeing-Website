@@ -10,6 +10,7 @@
 </head>
 <body>
 
+
     <!-- embedding JS libraries -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
@@ -34,12 +35,25 @@
 				<p>What if your phone could help you improve your mental health?</p>
 			</div>
 		</div>
-	
-		<!-- Slide 3: Facts Page1 -->
+			<!-- Slide 3: Map Page -->
 		<div class="slide">
 			<div class="hook-page">
 				<h1>Shocking Facts</h1>
 				<p>Your phone's usage patterns might reveal more about your mental health than you think.</p>
+			</div>
+		</div>
+		<!-- Slide : Facts Page1 -->
+		<div class="slide">
+			<div class="hook-page">
+        <div>
+				  <h2>Interactive Map Visualization</h2>
+		    <div>
+			  <button onclick="updateMap('dataset2')">Show Average Screen Time</button>
+			  <button onclick="updateMap('dataset1')">Show Yearly Change</button>
+			  <button id="nextButton">Next</button>
+		</div>
+		<div id="map-container"></div>
+		<div class="country_tooltip" id="mapTooltip"></div>
 			</div>
 		</div>
 	
@@ -167,9 +181,11 @@
 	<script src="js/bubble-chart.js"></script>
 
 	<script src="js/emotion-graph.js"></script>
+  <script src="https://unpkg.com/topojson-client@3"></script>
 
 	<!-- Load data, create visualizations -->
 	<script src="js/main.js"></script>
+	<script src="js/world-map.js"></script>
 
 </body>
 </html>

@@ -1,3 +1,20 @@
+#map-container {
+    position: relative;
+}
+button {
+    margin: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.country_tooltip {
+    position: absolute;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+    display: none;
 /* General Styles */
 body {
     font-family: 'M PLUS Rounded 1c', Arial, sans-serif;
