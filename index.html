@@ -40,20 +40,18 @@
 				<p>Your phone's usage patterns might reveal more about your mental health than you think.</p>
 			</div>
 		</div>
+		
 		<!-- Slide : Facts Page1 -->
 		<div class="slide">
 			<div class="hook-page">
-        <div>
-				  <h2>Interactive Map Visualization</h2>
-		    </div>
-			  <button onclick="updateMap('dataset2')">Show Average Screen Time</button>
-			  <button onclick="updateMap('dataset1')">Show Yearly Change</button>
-			  <button id="nextButton">Next</button>
+				<h2>Interactive Map Visualization</h2>
+			<button onclick="updateMap('dataset2')">Show Average Screen Time</button>
+			<button onclick="updateMap('dataset1')">Show Yearly Change</button>
+			<button id="nextButton">Next</button>
 		</div>
 		<div id="map-container"></div>
 		<div class="country_tooltip" id="mapTooltip"></div>
 			</div>
-		</div>
 	
 		<!-- Slide 4: Bubble Chart Visualization -->
 		<div class="slide">
@@ -172,6 +170,7 @@
 			<span class="dot" data-slide="4"></span>
 			<span class="dot" data-slide="5"></span>
 			<span class="dot" data-slide="6"></span>
+			<span class="dot" data-slide="7"></span>
 		</div>
 
 	<!-- Load scripts in the correct order -->
@@ -179,10 +178,11 @@
 	<script src="js/bubble-chart.js"></script>
 
 	<script src="js/emotion-graph.js"></script>
+	
+	<script src="js/world-map.js"></script>
 
 	<!-- Load data, create visualizations -->
 	<script src="js/main.js"></script>
-	<script src="js/world-map.js"></script>
 
 </body>
 </html>
