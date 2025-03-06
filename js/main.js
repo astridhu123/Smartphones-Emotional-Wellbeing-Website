@@ -1,14 +1,22 @@
 
 let mapVisInstance;
+let countryData1 = {}, countryData2 = {};
 
 d3.json("https://unpkg.com/world-atlas@2.0.2/countries-50m.json").then(geoData => {
     Promise.all([
-        d3.csv("data/World Screen Time/data-1J1Gs.csv"),
-        d3.csv("data/World Screen Time/data-t0eHz.csv")
+        d3.csv("data/World Screen Time/data-t0eHz.csv"),
+        d3.csv("data/World Screen Time/data-1J1Gs.csv")
     ]).then(([dataset1, dataset2]) => {
-        let countryData1 = {}, countryData2 = {};
-        dataset1.forEach(d => { countryData1[d.Country] = +d["Difference (Minutes)"]; });
-        dataset2.forEach(d => { countryData2[d.Country] = +d["Time for Datawrapper"]; });
+        let values = dataset1.map(d => +d["Time for Datawrapper"]).filter(d => !isNaN(d));
+        worldAverageScreenTime = d3.mean(values);
+
+
+        d3.select("#world-average")
+            .text(`🌍 World Average Screen Time: ${worldAverageScreenTime.toFixed(2)} hours`)
+            .style("display", "block");
+
+        dataset1.forEach(d => { countryData1[d.Country] = +d["Time for Datawrapper"]; });
+        dataset2.forEach(d => { countryData2[d.Country] = +d["Difference (Minutes)"]; });
 
         mapVisInstance = new MapVis("map-container", geoData, countryData1, 'dataset1');
 
@@ -21,10 +29,47 @@ d3.json("https://unpkg.com/world-atlas@2.0.2/countries-50m.json").then(geoData =
         };
     });
 });
+let step = 0;
 
 document.getElementById("nextButton").addEventListener("click", () => {
     if (mapVisInstance) {
+        step = (step + 1) % 3;
+        updateMapState();
+    }
+});
+
+document.getElementById("prevButton").addEventListener("click", () => {
+    if (mapVisInstance) {
+        step = (step - 1 + 3) % 3;
+        if (step === 0) {
+            mapVisInstance.updateData(countryData1, 'dataset1');
+        }
+        updateMapState();
+    }
+});
+
+function updateMapState() {
+    if (step === 0) {
+        mapVisInstance.updateData(countryData1, 'dataset1');
+        d3.select("#world-average").style("display", "block");
+    } else if (step === 1) {
         mapVisInstance.focusOnUS();
+        mapVisInstance.updateData(countryData1, 'dataset1');
+        d3.select("#world-average").style("display", "none");
+    } else if (step === 2) {
+        mapVisInstance.svg.selectAll(".city-dot").remove();
+        mapVisInstance.svg.selectAll(".city-label").remove();
+        mapVisInstance.resetZoom();
+        mapVisInstance.updateData(countryData2, 'dataset2');
+        d3.select("#world-average").style("display", "none");
+    }
+}
+
+document.getElementById("prevButton").addEventListener("click", () => {
+    if (mapVisInstance && mapVisInstance.zoomedToUS) {
+        mapVisInstance.svg.selectAll(".city-dot").remove();
+        mapVisInstance.svg.selectAll(".city-label").remove();
+        mapVisInstance.resetZoom();
     }
 });
 
@@ -32,7 +77,6 @@ let emotion_dashboard;
 
 load_emotion_data();
 
-// Function to load the emotional training data
 function load_emotion_data () {
     d3.csv("data/App Usage and Emotions Datasets/train.csv").then(data => {
 
