@@ -14,18 +14,32 @@
 	</head>
 <body>
 
-    <!-- ADD IN YOUR HTML ELEMENTS HERE -->
+<div id="secondPage" class="page">
+	<div>
+		<h2>Interactive Map Visualization</h2>
+		<div>
+			<button onclick="updateMap('dataset2')">Show Average Screen Time</button>
+			<button onclick="updateMap('dataset1')">Show Yearly Change</button>
+			<button id="nextButton">Next</button>
+		</div>
+		<div id="map-container"></div>
+		<div class="country_tooltip" id="mapTooltip"></div>
+	</div>
+</div>
 
-    <!-- embedding JS libraries -->
+
+<!-- embedding JS libraries -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 	<!-- d3 -->
 	<script src="https://d3js.org/d3.v7.min.js"></script>
 
     <!-- ADD IN OTHER JS FILES HERE -->
+	<script src="https://unpkg.com/topojson-client@3"></script>
 
     <!-- ****** TODO: FILTER DATA, DISPLAY BAR CHART & KEY FIGURES ****** -->
 	<script src="js/main.js"></script>
+	<script src="js/world-map.js"></script>
 
 </body>
 </html>
