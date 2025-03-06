@@ -224,11 +224,12 @@ ul li::before {
 }
 
 #emotion-dashboard {
-    height: 1000px;
-    width: 1000px;
+    height: 100%;
+    width: 100%;
 }
 
 #emotion-graphic {
-    height: 1000px;
-    width: 1000px;
+    width: 100%;
+    height: 800px; /* Ensure there's some height for the SVG */
+    border: 1px solid #ddd; /* Add a border to check the container visibility */
 }
