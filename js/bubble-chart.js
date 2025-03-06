@@ -35,7 +35,7 @@ Promise.all([
     console.error("Error loading CSV files:", error);
 });
 function renderBubbleChart(data) {
-    const margin = { top: 50, right: 50, bottom: 50, left: 350 };
+    const margin = { top: 50, right: 250, bottom: 50, left: 350 }; // Increase right margin for legend
     const width = 800 - margin.left - margin.right;
     const height = 600 - margin.top - margin.bottom;
 
@@ -49,6 +49,7 @@ function renderBubbleChart(data) {
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
+
 
     // Scales
     const xScale = d3.scaleBand()
@@ -65,7 +66,9 @@ function renderBubbleChart(data) {
         .domain([0, d3.max(data, d => d.value)])
         .range([5, 30]);
 
-    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+    const colorScale = d3.scaleOrdinal()
+        .domain(["Male", "Female"]) // Map genders to specific colors
+        .range(["#1f77b4", "#ff7f0e"]); // Colors for Male and Female
 
     // Add bubbles
     svg.selectAll("circle")

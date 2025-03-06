@@ -162,7 +162,7 @@ ul li::before {
     background-color: #f0f4f8; /* Light pastel background */
 }
 
-/* Visualization Page */
+/* Vi/* Visualization Page */
 .visualization-page {
     display: flex;
     flex-direction: column;
@@ -171,20 +171,54 @@ ul li::before {
     height: 100%;
 }
 
+/* Chart Container */
+.chart-container {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: 20px; /* Space between chart and legend */
+}
+
+/* Bubble Chart */
 #bubble-chart {
-    margin-top: 20px;
+    flex: 1; /* Take up remaining space */
 }
 
-#filters {
-    margin-top: 20px;
-}
-
-/* Tooltip */
-.tooltip {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.9);
+/* Legend Styles */
+#legend {
+    width: 200px; /* Fixed width for the legend */
     padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    pointer-events: none;
+}
+
+#legend h3 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #2a4d69;
+}
+
+#size-legend p,
+#color-legend p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #4a6fa5;
+}
+
+.color-key {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+/* Filters */
+#filters {
+    margin-top: 20px;
 }
