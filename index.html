@@ -5,8 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Smartphones & Emotional Wellbeing</title>
 	<link rel="stylesheet" href="css/style.css">
-	<script src="https://d3js.org/d3.v7.min.js"></script> <!-- Load D3.js -->
-
+	<!-- Load D3.js -->
+	<script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
 <div class="slideshow-container">
@@ -41,7 +41,27 @@
 	<div class="slide">
 		<div class="visualization-page">
 			<h1>Therapy/Counseling Rates by Demographics</h1>
-			<div id="bubble-chart"></div>
+			<div class="chart-container">
+				<div id="bubble-chart"></div>
+				<!-- Add Legend Section -->
+				<div id="legend">
+					<h3>Legend</h3>
+					<div id="size-legend">
+						<p><strong>Bubble Size:</strong> Represents the rate of therapy/counseling.</p>
+					</div>
+					<div id="color-legend">
+						<p><strong>Bubble Color:</strong> Represents gender.</p>
+						<div class="color-key">
+							<div class="color-box" style="background-color: #1f77b4;"></div>
+							<span>Male</span>
+						</div>
+						<div class="color-key">
+							<div class="color-box" style="background-color: #ff7f0e;"></div>
+							<span>Female</span>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div id="filters">
 				<label for="education-filter">Filter by Education:</label>
 				<select id="education-filter">
@@ -63,9 +83,6 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-
 
 <div class="dot-navigation">
 	<span class="dot active" data-slide="1"></span>
@@ -74,8 +91,9 @@
 	<span class="dot" data-slide="4"></span>
 </div>
 
+<!-- Load scripts in the correct order -->
 <script src="js/application-dashboard.js"></script>
 <script src="js/main.js"></script>
-<script src="js/bubble-chart.js"></script> <!-- Add bubble chart script -->
+<script src="js/bubble-chart.js"></script>
 </body>
 </html>
