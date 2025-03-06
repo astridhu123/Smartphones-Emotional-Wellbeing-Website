@@ -1,13 +1,3 @@
-#emotion-dashboard {
-    height: 1000px;
-    width: 1000px;
-}
-
-#emotion-graphic {
-    height: 1000px;
-    width: 1000px;
-}
-
 /* General Styles */
 body {
     font-family: 'M PLUS Rounded 1c', Arial, sans-serif;
@@ -231,4 +221,14 @@ ul li::before {
 /* Filters */
 #filters {
     margin-top: 20px;
+}
+
+#emotion-dashboard {
+    height: 1000px;
+    width: 1000px;
+}
+
+#emotion-graphic {
+    height: 1000px;
+    width: 1000px;
 }
