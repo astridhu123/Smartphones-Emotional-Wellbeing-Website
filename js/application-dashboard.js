@@ -11,7 +11,7 @@ class EmotionGraph {
         this.data = data;
         this.displayData = data;
 
-        console.log(data);
+        // console.log(data);
         this.initVis();
     }
 
@@ -59,7 +59,7 @@ class EmotionGraph {
         let emotionCountByPlatform = {};
     
         // Iterate through the dataset
-        vis.data.forEach(d => {
+        vis.displayData.forEach(d => {
             let platform = d.Platform;
             let emotion = d.Dominant_Emotion;
     
@@ -80,7 +80,7 @@ class EmotionGraph {
         // Store the processed data
         vis.displayData = emotionCountByPlatform;
     
-        console.log(vis.displayData);
+        // console.log(vis.displayData);
 
         this.updateVis();
 	}
@@ -88,10 +88,10 @@ class EmotionGraph {
 	/*
 	 * The drawing function - should use the D3 update sequence (enter, update, exit)
  	* Function parameters only needed if different kinds of updates are needed
- 	*/    
+ 	*/   
     updateVis() {
         let vis = this;
-        
+    
         // Define a color scale for emotions (fixed color for each emotion)
         const emotionColors = {
             "Sadness": "#0000FF",       // Blue for sadness
@@ -101,62 +101,71 @@ class EmotionGraph {
             "Happiness": "#FFB6C1",     // Light pink for happiness
             "Boredom": "#D3D3D3",       // Light gray for boredom
         };
-        
-        
+    
         // Create a scale for bubble size based on the emotion count
         let sizeScale = d3.scaleSqrt()
-            .domain([0, d3.max(Object.values(vis.displayData).flatMap(platformData => Object.values(platformData)))])  // Get the max emotion count across all platforms
+            .domain([0, d3.max(Object.values(vis.displayData).flatMap(platformData => Object.values(platformData)))])  
             .range([5, 50]); // Minimum and maximum bubble sizes
-        
-        // Create a force simulation for all the platforms
-        let simulation = d3.forceSimulation()
-            .force("collide", d3.forceCollide(d => d.radius + 10)) // Prevent overlap using the radius + a little extra space
-            .force("center", d3.forceCenter(vis.width / 2, vis.height / 2)) // Keep the bubbles centered
-            .stop(); // Stop the simulation after a fixed number of ticks for performance
-        
-        // Create a group for each platform
+    
+        // Total number of groups (platforms)
         let platforms = Object.keys(vis.displayData); // Get all platforms
+        let totalGroups = platforms.length;
+        
+        // Define the number of groups per row and calculate number of rows
+        let groupsPerRow = 3; 
+        let totalRows = Math.ceil(totalGroups / groupsPerRow); 
+    
+        // Calculate horizontal and vertical spacing
+        let horizontalSpacing = vis.width / groupsPerRow;
+        let verticalSpacing = vis.height / totalRows;
+    
         let platformGroups = vis.svg.selectAll(".platform-group")
             .data(platforms)
             .join("g")
             .attr("class", "platform-group")
-            .attr("transform", (d, i) => `translate(0, ${i * (vis.height / platforms.length)})`); // Vertically space out groups for each platform
-        
+            .attr("transform", (d, i) => {
+                // Calculate row (y) and column (x) for the group position
+                let row = Math.floor(i / groupsPerRow);  
+                let col = i % groupsPerRow;  
+    
+                let x = col * horizontalSpacing;  
+                let y = row * verticalSpacing; 
+                return `translate(${x}, ${y})`;  
+            });
+    
         // For each platform, we will now create the bubbles
         platformGroups.each(function(platform) {
             let platformData = vis.displayData[platform];
-            
+    
             // Add the platform icon to the center of the group
             d3.select(this).append("image")
                 .attr("class", "platform-icon")
-                .attr("x", vis.width / 2 - 25) // Center the icon horizontally
-                .attr("y", vis.height / (platforms.length + 1) - 25) // Center the icon vertically
-                .attr("width", 50) // Icon width
-                .attr("height", 50) // Icon height
-                .attr("xlink:href", `images/application_icons/${platform}.png`); // Icon path, assumes icons are named exactly after the platform
-            
+                .attr("x", horizontalSpacing / 2 - 25)
+                .attr("y", verticalSpacing / 2 - 25) 
+                .attr("width", 50) 
+                .attr("height", 50) 
+                .attr("xlink:href", `images/application_icons/${platform}.png`);
+    
             // Prepare the data for simulation (convert platformData to an array of objects)
             let simulationData = Object.keys(platformData).map(emotion => ({
                 name: emotion,
                 count: platformData[emotion],
-                angle: Math.random() * 2 * Math.PI, // Random initial angle for circular layout
                 radius: sizeScale(platformData[emotion]), // Radius based on emotion count
                 platform: platform, // Attach platform info to each bubble
             }));
-            
+    
             // Create the simulation for this platform's bubbles
             let platformSimulation = d3.forceSimulation(simulationData)
                 .force("collide", d3.forceCollide(d => d.radius + 10)) // Prevent overlap using the radius + a little extra space
-                .force("center", d3.forceCenter(vis.width / 2, vis.height / (platforms.length + 1))) // Keep each platform group centered
-                .stop(); // Stop the simulation after a fixed number of ticks for performance
-            
+                .force("center", d3.forceCenter(horizontalSpacing / 2, verticalSpacing / 2)) // Keep each platform group centered within its space
+                .force("radial", d3.forceRadial(100).strength(0.1)) // Apply a radial force pushing the bubbles away from the center
+                .stop(); 
+    
             // Bind data to the bubbles and create them inside the platform group
             let bubbles = d3.select(this).selectAll(".bubble")
                 .data(simulationData)
                 .join("circle")
                 .attr("class", "bubble")
-                .attr("cx", d => vis.width / 2 + d.radius * Math.cos(d.angle)) // Use polar coordinates (angle and radius) for circular placement
-                .attr("cy", d => vis.height / (platforms.length + 1) + d.radius * Math.sin(d.angle)) // Same as above
                 .attr("r", d => d.radius) // Set the size based on emotion count
                 .attr("fill", d => emotionColors[d.name]) // Set color based on the emotion
                 .attr("opacity", 0.7) // Add opacity for better visualization
@@ -176,29 +185,34 @@ class EmotionGraph {
                     vis.tooltip.style("visibility", "hidden");
                     d3.select(this).attr("opacity", 0.7); // Reset opacity
                 });
-            
+    
             // Update the simulation for this platform
             platformSimulation.nodes(simulationData).on("tick", function() {
                 // During the simulation, update the position of each bubble
                 bubbles
-                    .attr("cx", d => vis.width / 2 + d.radius * Math.cos(d.angle))
-                    .attr("cy", d => vis.height / (platforms.length + 1) + d.radius * Math.sin(d.angle));
+                    .attr("cx", d => d.x) // Use simulation's x position
+                    .attr("cy", d => d.y); // Use simulation's y position
             });
-            
+    
             // Start the simulation for this platform
             platformSimulation.alpha(1).restart();
         });
     }
-
+    
     /*
     * Recall the function when different toggles have been selected
     */
     selectionChanged(newData){
         let vis = this;
 
-        vis.data = newData;
-        console.log(vis.displayData);
-
-        this.wrangleData();
+        console.log("Filtered data in Select");
+        console.log(newData);
+    
+        // Update the internal data with the new, filtered data
+        vis.displayData = newData; // Reset displayData
+    
+        // Reprocess the new data into emotion counts by platform
+        vis.wrangleData();
     }
+    
 }
