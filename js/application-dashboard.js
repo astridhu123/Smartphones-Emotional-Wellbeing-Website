@@ -133,18 +133,24 @@ class EmotionGraph {
                 return `translate(${x}, ${y})`;  
             });
     
+        // Remove old application icons before adding new ones
+        platformGroups.selectAll(".platform-icon").remove();
+    
+        // Add the platform icon to the center of the group
+        platformGroups.append("image")
+            .attr("class", "platform-icon")
+            .attr("x", horizontalSpacing / 2 - 25)
+            .attr("y", verticalSpacing / 2 - 25) 
+            .attr("width", 50) 
+            .attr("height", 50) 
+            .attr("xlink:href", d => `images/application_icons/${d}.png`);
+    
+        // Remove existing bubbles before creating new ones
+        platformGroups.selectAll(".bubble").remove();
+    
         // For each platform, we will now create the bubbles
         platformGroups.each(function(platform) {
             let platformData = vis.displayData[platform];
-    
-            // Add the platform icon to the center of the group
-            d3.select(this).append("image")
-                .attr("class", "platform-icon")
-                .attr("x", horizontalSpacing / 2 - 25)
-                .attr("y", verticalSpacing / 2 - 25) 
-                .attr("width", 50) 
-                .attr("height", 50) 
-                .attr("xlink:href", `images/application_icons/${platform}.png`);
     
             // Prepare the data for simulation (convert platformData to an array of objects)
             let simulationData = Object.keys(platformData).map(emotion => ({
@@ -199,6 +205,10 @@ class EmotionGraph {
         });
     }
     
+    
+    
+
+
     /*
     * Recall the function when different toggles have been selected
     */
