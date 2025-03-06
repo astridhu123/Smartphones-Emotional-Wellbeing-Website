@@ -1,98 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>INSERT TITLE HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</title>
-
-		<!-- Load CSS libraries -->
-	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
-		<!-- own CSS -->
-		<link rel="stylesheet" href="css/style.css">
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Smartphones & Emotional Wellbeing</title>
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Load D3.js -->
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
 <body>
-
-    <!-- ADD IN YOUR HTML ELEMENTS HERE -->
-
-	<!-- HTML FACT PAGE 1, AZKA -->
-
-	<div class="row">
-
-		<!-- CHART ABOUT BEFORE AND AFTER PANDEMIC EMOTIONS -->
-		<div class="col">
-
-			<div id="pandemic-chart">
-				INSERT PANDEMIC CHART HERE
+<div class="slideshow-container">
+	<!-- Slide 1: Title Page -->
+	<div class="slide active">
+		<div class="title-page">
+			<div class="title-box">
+				<h1>Smartphones & Emotional Wellbeing</h1>
+				<p>Exploring the hidden connection between our devices and our emotions.</p>
 			</div>
-
 		</div>
-
-		<!-- FACT SHEET -->
-		<div class="col">
-			<p>Problematic Smartphone use, or SPA, increased during the covid-19 pandemic ..... </p>
-			<p>https://pmc.ncbi.nlm.nih.gov/articles/PMC8713358/#:~:text=Access%20to%20epidemic%2Drelated%20information,use%20and%20habitual%20checking%20of</p>
-		</div>
-
 	</div>
 
+	<!-- Slide 2: Hook Page -->
+	<div class="slide">
+		<div class="hook-page">
+			<h1>Did You Know?</h1>
+			<p>Can your smartphone detect when you're feeling stressed or anxious?</p>
+			<p>What if your phone could help you improve your mental health?</p>
+		</div>
+	</div>
 
-	<!-- HTML FACT PAGE 2, AZKA -->
+	<!-- Slide 3: Facts Page1 -->
+	<div class="slide">
+		<div class="hook-page">
+			<h1>Shocking Facts</h1>
+			<p>Your phone's usage patterns might reveal more about your mental health than you think.</p>
+		</div>
+	</div>
 
-	<!-- EMBEDDED INTERACTIVE EMOTION DASHBAORD -->
-	<div class="row">
-		
-		<div id="emotion-dashboard">
-			<h3>Emotional Dashboard</h3>	
-			
-			<!-- COLUMN ONE WITH TOGGLES -->
-			<div class="med-col-2">
-				<div id="controls">
-					<p>Toggle Emotions</p>
-					<div id="emotion-toggle">
-						<label><input type="checkbox" id="Sadness" checked> Sadness</label>
-						<label><input type="checkbox" id="Anger" checked> Anger</label>
-						<label><input type="checkbox" id="Anxiety" checked> Anxiety</label>
-						<label><input type="checkbox" id="Neutral" checked> Neutral</label>
-						<label><input type="checkbox" id="Happiness" checked> Happiness</label>
-						<label><input type="checkbox" id="Boredom" checked> Boredom</label>
+	<!-- Slide 4: Bubble Chart Visualization -->
+	<div class="slide">
+		<div class="visualization-page">
+			<h1>Therapy/Counseling Rates by Demographics</h1>
+			<div class="chart-container">
+				<div id="bubble-chart"></div>
+				<!-- Add Legend Section -->
+				<div id="legend">
+					<h3>Legend</h3>
+					<div id="size-legend">
+						<p><strong>Bubble Size:</strong> Represents the rate of therapy/counseling.</p>
 					</div>
-					<br>
-					<p>Toggle Platforms:</p>
-					<div id="platform-toggle">
-						<label><input type="checkbox" id="Instagram" checked> Instagram</label>
-						<label><input type="checkbox" id="Twitter" checked> Twitter</label>
-						<label><input type="checkbox" id="Facebook" checked> Facebook</label>
-						<label><input type="checkbox" id="Whatsapp" checked> Whatsapp</label>
-						<label><input type="checkbox" id="Telegram" checked> Telegram</label>
-						<label><input type="checkbox" id="Snapchat" checked> Snapchat</label>
-						<label><input type="checkbox" id="LinkedIn" checked> LinkedIn</label>
+					<div id="color-legend">
+						<p><strong>Bubble Color:</strong> Represents gender.</p>
+						<div class="color-key">
+							<div class="color-box" style="background-color: #1f77b4;"></div>
+							<span>Male</span>
+						</div>
+						<div class="color-key">
+							<div class="color-box" style="background-color: #ff7f0e;"></div>
+							<span>Female</span>
+						</div>
 					</div>
 				</div>
 			</div>
-
-			<!-- LARGER COLUMN 2 WITH GRAPHIC -->
-			<div class="med-col-10">
-				<div id="emotion-graphic"></div>
+			<div id="filters">
+				<label for="education-filter">Filter by Education:</label>
+				<select id="education-filter">
+					<option value="All">All</option>
+					<option value="High school diploma or GED">High School Diploma or GED</option>
+					<option value="Bachelor's degree or higher">Bachelor's Degree or Higher</option>
+				</select>
+				<label for="age-filter">Filter by Age Group:</label>
+				<select id="age-filter">
+					<option value="All">All</option>
+					<option value="18 - 29 years">18 - 29 years</option>
+					<option value="30 - 39 years">30 - 39 years</option>
+					<option value="40 - 49 years">40 - 49 years</option>
+					<option value="50 - 59 years">50 - 59 years</option>
+					<option value="60 - 69 years">60 - 69 years</option>
+					<option value="70 - 79 years">70 - 79 years</option>
+					<option value="80 years and above">80 years and above</option>
+				</select>
 			</div>
-		
 		</div>
-
 	</div>
 
-    <!-- embedding JS libraries -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<div class="dot-navigation">
+	<span class="dot active" data-slide="1"></span>
+	<span class="dot" data-slide="2"></span>
+	<span class="dot" data-slide="3"></span>
+	<span class="dot" data-slide="4"></span>
+</div>
 
-	<!-- d3 -->
-	<script src="https://d3js.org/d3.v7.min.js"></script>
-
-    <!-- ADD IN OTHER JS FILES HERE -->
-	<script src="js/application-dashboard.js"></script>
-	<script src="js/emotion-graph.js"></script>
-
-	<!-- Load data, create visualizations -->
-	<script src="js/main.js"></script>
-
+<!-- Load scripts in the correct order -->
+<script src="js/application-dashboard.js"></script>
+<script src="js/main.js"></script>
+<script src="js/bubble-chart.js"></script>
 </body>
 </html>
