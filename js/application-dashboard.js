@@ -1,6 +1,7 @@
 let currentSlideIndex = 0;
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
+let isScrolling = false;
 
 // Function to go to the next slide
 function goToNextSlide() {
@@ -21,48 +22,44 @@ function goToPreviousSlide() {
 // Update slide visibility and active dots
 function updateSlides() {
     slides.forEach((slide, index) => {
-        if (index === currentSlideIndex) {
-            slide.classList.add('active');
-        } else {
-            slide.classList.remove('active');
-        }
+        slide.classList.toggle('active', index === currentSlideIndex);
     });
 
     dots.forEach((dot, index) => {
-        if (index === currentSlideIndex) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active');
-        }
+        dot.classList.toggle('active', index === currentSlideIndex);
     });
 }
 
-// Initialize first slide
-updateSlides();
+function changeSlide(direction) {
+    if (isScrolling) return;
 
-// Flag to prevent multiple scroll actions in rapid succession
-let isScrolling = false;
-
-// Event listeners for scroll
-window.addEventListener('wheel', (event) => {
-    if (isScrolling) return; // Prevent scrolling if already scrolling
-
-    // Prevent default scroll behavior
-    event.preventDefault();
-
-    // Determine the direction of the scroll
-    if (event.deltaY > 0) {
-        // Scroll down (next slide)
+    let newIndex = currentSlideIndex + direction;
+    if (newIndex >= 0 && newIndex < slides.length) {
+        currentSlideIndex = newIndex;
+        updateSlides();
         isScrolling = true;
-        goToNextSlide();
-    } else if (event.deltaY < 0) {
-        // Scroll up (previous slide)
-        isScrolling = true;
-        goToPreviousSlide();
+
+        setTimeout(() => {
+            isScrolling = false;
+        }, 700);
     }
+}
+window.addEventListener('wheel', (event) => {
+    if (isScrolling) return;
 
-    // Timeout to re-enable scrolling after the transition is completed
-    setTimeout(() => {
-        isScrolling = false;
-    }, 600); // Adjust the timeout based on your slide transition time
+    event.preventDefault(); // Stop normal scrolling
+    changeSlide(event.deltaY > 0 ? 1 : -1); // Detect direction
 }, { passive: false });
+
+// Handle dot navigation
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        if (!isScrolling && index !== currentSlideIndex) {
+            currentSlideIndex = index;
+            updateSlides();
+        }
+    });
+});
+
+// Initialize slides
+updateSlides();
