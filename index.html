@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Load D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Load fullPage.js (scrolling pages)-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
+
 </head>
 <body>
 <!-- embedding JS libraries -->
@@ -16,9 +21,9 @@
 <script src="https://unpkg.com/topojson-client@3"></script>
 <!-- d3 -->
 
-<div class="slideshow-container">
+<div class="main-container" id="fullpage">
     <!-- Slide 1: Title Page -->
-    <div class="slide active">
+    <div class="section">
         <div class="title-page">
             <div class="title-box">
                 <h1>Smartphones & Emotional Wellbeing</h1>
@@ -28,7 +33,7 @@
     </div>
 
     <!-- Slide 2: Hook Page -->
-    <div class="slide">
+    <div class="section">
         <div class="hook-page">
             <h1>Did You Know?</h1>
             <p>Can your smartphone detect when you're feeling stressed or anxious?</p>
@@ -36,7 +41,7 @@
         </div>
     </div>
     <!-- Slide 3: Map Page -->
-    <div class="slide">
+    <div class="section">
         <div class="hook-page">
             <h1>Shocking Facts</h1>
             <p>Your phone's usage patterns might reveal more about your mental health than you think.</p>
@@ -44,7 +49,7 @@
     </div>
 
     <!-- Slide : Facts Page1 -->
-    <div class="slide">
+    <div class="section">
         <h2>Interactive Map Visualization</h2>
         <button id="prevButton">Previous</button>
         <button id="nextButton">Next</button>
@@ -54,7 +59,7 @@
     </div>
 
     <!-- Slide 4: Bubble Chart Visualization -->
-    <div class="slide">
+    <div class="section">
         <div class="visualization-page">
             <h1>Therapy/Counseling Rates by Demographics</h1>
             <div class="chart-container">
@@ -100,7 +105,7 @@
         </div>
     </div>
 
-    <div class="slide">
+    <div class="section">
         <div class="row">
             <h1>The Pandemic and Emotional Wellbeing</h1>
             <!-- CHART ABOUT BEFORE AND AFTER PANDEMIC EMOTIONS -->
@@ -123,7 +128,7 @@
         </div>
     </div>
 
-    <div class="slide">
+    <div class="section">
 
         <div class="row">
             <div id="emotion-dashboard">
@@ -163,20 +168,10 @@
             </div>
         </div>
     </div>
-
-    <div class="dot-navigation">
-        <span class="dot active" data-slide="1"></span>
-        <span class="dot" data-slide="2"></span>
-        <span class="dot" data-slide="3"></span>
-        <span class="dot" data-slide="4"></span>
-        <span class="dot" data-slide="5"></span>
-        <span class="dot" data-slide="6"></span>
-        <span class="dot" data-slide="7"></span>
-    </div>
 </div>
 
 <!-- Load scripts in the correct order -->
-<script src="js/application-dashboard.js"></script>
+<script src="js/scrolling.js"></script>
 <script src="js/bubble-chart.js"></script>
 
 <script src="js/emotion-graph.js"></script>
