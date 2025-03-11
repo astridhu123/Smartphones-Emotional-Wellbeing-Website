@@ -258,3 +258,10 @@ ul li::before {
     height: 800px; /* Ensure there's some height for the SVG */
 
 }
+
+.med-col-10 {
+    display: grid; /* Enables Grid layout */
+    place-items: center; /* Centers both horizontally and vertically */
+    height: 100vh; /* Optional: makes the container take up full viewport height */
+}
+
