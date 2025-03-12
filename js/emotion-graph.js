@@ -1,4 +1,11 @@
+/*
+* Emotion Bubble Chart
+* @param
+* @param
+*/
+
 class EmotionGraph {
+
     constructor(parentElement, data) {
         this.parentElement = parentElement;
         this.data = data;
