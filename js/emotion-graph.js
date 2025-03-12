@@ -11,6 +11,8 @@ class EmotionGraph {
         this.data = data;
         this.displayData = data;
         this.chartState = "bubble";
+
+        // console.log(data);
         this.emotionColors = {
             "Sadness": "#0000FF",
             "Anger": "#FF0000",
@@ -21,7 +23,10 @@ class EmotionGraph {
         };
         this.initVis();
     }
-    initVis() {
+    /*
+        * Method that initializes the visualization (static content, e.g. SVG area or axes)
+     */
+    initVis(){
         let vis = this;
         vis.margin = { top: 10, right: 10, bottom: 10, left: 10 };
         vis.width = 1000;
