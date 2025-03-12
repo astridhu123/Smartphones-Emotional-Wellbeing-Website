@@ -83,9 +83,9 @@ function load_emotion_data() {
         d3.csv("data/App Usage and Emotions Datasets/val.csv"),
         d3.csv("data/App Usage and Emotions Datasets/test.csv")
     ]).then(datasets => {
-        let [trainData, validateData] = datasets;
+        let [trainData, validateData, testData] = datasets;
 
-        let combinedData = [...trainData, ...validateData].filter(row =>
+        let combinedData = [...trainData, ...validateData, ...testData].filter(row =>
             Object.values(row).some(value => value.trim() !== "")
         );
 
