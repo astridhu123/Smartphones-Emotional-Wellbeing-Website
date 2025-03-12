@@ -75,7 +75,6 @@
     <div class="section">
         <div class="visualization-page">
             <h1>Popular Mental Health Keywords</h1>
-            <p class="align-left">Search Volume on a scale from 1 to 100, where 1 represents the least searched and 100 represents the most searched.</p>
             <div id="word-cloud"></div>
         </div>
     </div>
@@ -157,6 +156,30 @@
         </div>
     </div>
 
+
+    <!-- Slide: Bar Chart and Scatter Plot Visualization -->
+
+    <div class="section">
+
+        <div id="visualization-container">
+            <div id="chart-container">
+                <div id="bar-chart"></div>
+                <div id="scatter-plot" style="display: none;"></div>
+                <button id="switch-button">Switch to Scatter Plot</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide:  Bar Chart and Scatter Plot Visualization Explanation Page-->
+    <div class="section">
+        <div class="facts-page">
+            <h1>Implications for Mental Health Resources</h1>
+            <p>The search volume patterns indicate that <b>people are seeking mental health guidance</b>,</p>
+            <p>but the extent to which <u>they find trusted resources varies based on the establishment of the websites</u>.</p>
+            <p>Well-established websites are clearly central to providing information on emotional well-being,</p>
+            <p>yet it may be important to consider how these platforms can adapt to the changing landscape of smartphone usage.</p>
+        </div>
+    </div>
     <!-- Slide: Conclusion Slide -->
     <div class="section">
         <div class="title-page" style="background-image: url('images/boy.png');">
@@ -194,6 +217,7 @@
 <script src="js/word-cloud.js"></script>
 <script src="js/emotion-graph.js"></script>
 <script src="js/world-map.js"></script>
+<script src="js/keyword-chart.js"></script>
 
 <!-- Load data, create visualizations -->
 <script src="js/main.js"></script>
