@@ -5,12 +5,12 @@ let countryData1 = {}, countryData2 = {};
 d3.json("https://unpkg.com/world-atlas@2.0.2/countries-50m.json").then(geoData => {
     Promise.all([
         d3.csv("data/World Screen Time/data-t0eHz.csv"),
-        d3.csv("data/World Screen Time/data-1J1Gs.csv")
-    ]).then(([dataset1, dataset2]) => {
+        d3.csv("data/World Screen Time/data-1J1Gs.csv"),
+        d3.csv("data/search terms/Related_Keywords.csv") // Include the third dataset
+    ]).then(([dataset1, dataset2, wordCloudData]) => { // Add wordCloudData here
+        // Process dataset1 and dataset2
         let values = dataset1.map(d => +d["Time for Datawrapper"]).filter(d => !isNaN(d));
         worldAverageScreenTime = d3.mean(values);
-
-
         d3.select("#world-average")
             .text(`🌍 World Average Screen Time: ${worldAverageScreenTime.toFixed(2)} hours`)
             .style("display", "block");
@@ -18,8 +18,10 @@ d3.json("https://unpkg.com/world-atlas@2.0.2/countries-50m.json").then(geoData =
         dataset1.forEach(d => { countryData1[d.Country] = +d["Time for Datawrapper"]; });
         dataset2.forEach(d => { countryData2[d.Country] = +d["Difference (Minutes)"]; });
 
+        // Initialize the map visualization
         mapVisInstance = new MapVis("map-container", geoData, countryData1, 'dataset1');
 
+        // Function to update the map
         window.updateMap = function(dataset) {
             if (dataset === 'dataset1') {
                 mapVisInstance.updateData(countryData1, 'dataset1');
@@ -27,6 +29,14 @@ d3.json("https://unpkg.com/world-atlas@2.0.2/countries-50m.json").then(geoData =
                 mapVisInstance.updateData(countryData2, 'dataset2');
             }
         };
+
+        // Log the word cloud data to verify it's loaded correctly
+        console.log("Word Cloud Data:", wordCloudData);
+
+        // Initialize the word cloud visualization
+        const wordCloud = new WordCloud("word-cloud", wordCloudData);
+    }).catch(function (error) {
+        console.error("Error loading data:", error);
     });
 });
 let step = 0;
