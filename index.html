@@ -8,6 +8,8 @@
     <!-- Load D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
+    <!-- Load d3-cloud library -->
+    <script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.5/build/d3.layout.cloud.min.js"></script>
     <!-- Load fullPage.js (scrolling pages)-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
@@ -68,50 +70,14 @@
         <div class="country_tooltip" id="mapTooltip"></div>
     </div>
 
-    <!-- Slide 5: Bubble Chart Visualization -->
+    <!-- Slide 5: Word Cloud Visualization -->
     <div class="section">
         <div class="visualization-page">
-            <h1>Therapy/Counseling Rates by Demographics</h1>
-            <div class="chart-container">
-                <div id="bubble-chart"></div>
-                <!-- Add Legend Section -->
-                <div id="legend">
-                    <h3>Legend</h3>
-                    <div id="size-legend">
-                        <p><strong>Bubble Size:</strong> Represents the rate of therapy/counseling.</p>
-                    </div>
-                    <div id="color-legend">
-                        <p><strong>Bubble Color:</strong> Represents gender.</p>
-                        <div class="color-key">
-                            <div class="color-box" style="background-color: #1f77b4;"></div>
-                            <span>Male</span>
-                        </div>
-                        <div class="color-key">
-                            <div class="color-box" style="background-color: #ff7f0e;"></div>
-                            <span>Female</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="filters">
-                <label for="education-filter">Filter by Education:</label>
-                <select id="education-filter">
-                    <option value="All">All</option>
-                    <option value="High school diploma or GED">High School Diploma or GED</option>
-                    <option value="Bachelor's degree or higher">Bachelor's Degree or Higher</option>
-                </select>
-                <label for="age-filter">Filter by Age Group:</label>
-                <select id="age-filter">
-                    <option value="All">All</option>
-                    <option value="18 - 29 years">18 - 29 years</option>
-                    <option value="30 - 39 years">30 - 39 years</option>
-                    <option value="40 - 49 years">40 - 49 years</option>
-                    <option value="50 - 59 years">50 - 59 years</option>
-                    <option value="60 - 69 years">60 - 69 years</option>
-                    <option value="70 - 79 years">70 - 79 years</option>
-                    <option value="80 years and above">80 years and above</option>
-                </select>
-            </div>
+            <h1>Popular Mental Health Keywords</h1>
+            <g transform="translate (1000,250)">
+                <div id="word-cloud"></div>
+            </g>
+
         </div>
     </div>
 
@@ -197,6 +163,7 @@
             <ul style="text-align: left;">
                 <!--In alphabetical order-->
                 <li><a href="https://data.mendeley.com/datasets/vmwmn4252k/1">Data for "A Pandemic of Mental Health"</a></li>
+                <li><a href="https://www.clicks.so/popular-keywords/mental-health-keywords">Popular Mental Health Keywords</a></li>
                 <li><a href="https://www.kaggle.com/datasets/emirhanai/social-media-usage-and-emotional-well-being">Social Media Usage and Emotional Well-Being</a></li>
 
             </ul>
@@ -212,7 +179,7 @@
 
 <!-- Load scripts in the correct order -->
 <script src="js/scrolling.js"></script>
-<script src="js/bubble-chart.js"></script>
+<script src="js/word-cloud.js"></script>
 <script src="js/emotion-graph.js"></script>
 <script src="js/world-map.js"></script>
 

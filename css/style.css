@@ -203,9 +203,23 @@ ul li::before {
     gap: 20px; /* Space between chart and legend */
 }
 
-/* Bubble Chart */
-#bubble-chart {
-    flex: 1; /* Take up remaining space */
+/* Word Cloud Page */
+
+#word-cloud {
+    width: 1200px;
+    height: 415px; /* Adjust height as needed */
+}
+
+/* Word Cloud Tooltip */
+.wordcloud-tooltip {
+    position: relative;
+    place-items: center; /* Centers both horizontally and vertically */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
 }
 
 /* Legend Styles */
