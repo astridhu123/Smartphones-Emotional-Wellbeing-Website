@@ -77,15 +77,19 @@ let emotion_dashboard;
 
 load_emotion_data();
 
-function load_emotion_data () {
-    d3.csv("data/App Usage and Emotions Datasets/train.csv").then(data => {
+function load_emotion_data() {
+    Promise.all([
+        d3.csv("data/App Usage and Emotions Datasets/train.csv"),
+        d3.csv("data/App Usage and Emotions Datasets/val.csv"),
+        d3.csv("data/App Usage and Emotions Datasets/test.csv")
+    ]).then(datasets => {
+        let [trainData, validateData] = datasets;
 
-        const cleanedData = data.filter(row => Object.values(row).some(value => value.trim() !== ""));
-        // console.log(cleanedData);
+        let combinedData = [...trainData, ...validateData].filter(row =>
+            Object.values(row).some(value => value.trim() !== "")
+        );
 
-        cleanedData.User_ID = +cleanedData.User_ID;
-
-        cleanedData.forEach(row => {
+        combinedData.forEach(row => {
             row.User_ID = +row.User_ID;
             row.Daily_Usage_Time = +row.Daily_Usage_Time;
             row.Posts_Per_Day = +row.Posts_Per_Day;
@@ -94,9 +98,10 @@ function load_emotion_data () {
             row.Messages_Sent_Per_Day = +row.Messages_Sent_Per_Day;
         });
 
-        emotion_dashboard = new EmotionGraph("emotion-graphic", cleanedData);
-    })
+        emotion_dashboard = new EmotionGraph("emotion-graphic", combinedData);
+    });
 }
+
 
 // Create event listener to detect changes in both emotion and platform toggles
 d3.select("#emotion-toggle").on("change", function() {
