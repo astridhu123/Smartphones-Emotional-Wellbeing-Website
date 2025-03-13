@@ -15,10 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
         showWorldAverage();
         let descriptionBox = d3.select("#map-description");
         descriptionBox.html(`
-            <h3>🌍 Global Screen Time Trends</h3>
-            <p>The average person spends <strong>6 hours 40 minutes</strong> on screens daily.</p>
-            <p>📉 Some countries improved: Romania (-32 minutes), Mexico (-30 minutes).</p>
-            <p>📈 Others increased: UAE (+42 minutes), Russia (+24 minutes).</p>
+            <p>On average users aged 16 to 64 worldwide spent <b>6 hours and 40 minutes</b> per day on screens across various devices.</p>
+            <p>That equals to <b>46 hours and 40 minutes</b> for average screen time per week among worldwide internet users.</b></p>
+            <p>South Africans spend <b>9 hours 24 minutes</b> on their screens each day (that’s 2 hours 44 minutes more than the global average).</p>  
         `);
 
         descriptionBox.classed("show", true);
@@ -37,34 +36,33 @@ function executeStep(reverse = false) {
             if (step === 0) {
                 showWorldAverage();
                 descriptionBox.html(`
-                    <h3>🌍 Global Screen Time Trends</h3>
-                    <p>The average person spends <strong>6 hours 40 minutes</strong> on screens daily.</p>
-                    <p>📉 Some countries improved: Romania (-32 minutes), Mexico (-30 minutes).</p>
-                    <p>📈 Others increased: UAE (+42 minutes), Russia (+24 minutes).</p>
+                  <p>On average users aged 16 to 64 worldwide spent <b>6 hours and 40 minutes</b> per day on screens across various devices.</p>
+                  <p>That equals to <b>46 hours and 40 minutes</b> for average screen time per week among worldwide internet users.</b></p>
+                  <p>South Africans spend <b>9 hours 24 minutes</b> on their screens each day (that’s 2 hours 44 minutes more than the global average).</p>
+              
                 `);
             } else if (step === 1) {
                 showTooltipOnJapan();
                 descriptionBox.html(`
-                    <h3>🇯🇵 Japan: The Least Screen Time</h3>
+                    <h3>Japan: The Least Screen Time</h3>
                     <p>Japanese people have the <strong>lowest</strong> screen time worldwide, just <strong>3 hours 56 minutes</strong> daily.</p>
-                    <p>📵 Digital well-being tools and cultural habits contribute to minimal usage.</p>
+                    <p>Digital well-being tools and cultural habits contribute to minimal usage.</p>
                 `);
             } else if (step === 2) {
                 removeTooltipOnJapan();
                 mapVisInstance.focusOnUS();
                 showDataset1();
                 descriptionBox.html(`
-                    <h3>🇺🇸 USA: Heavy Screen Users</h3>
-                    <p>Americans spend <strong>7 hours 3 minutes</strong> daily on screens.</p>
-                    <p>👶 <strong>49%</strong> of toddlers (0-2 years old) already use smartphones.</p>
-                    <p>📱 Gen Z leads with an average of <strong>9 hours</strong> of screen time per day.</p>
+                    <p style="padding-top: 0">Americans spend <strong>7 hours 3 minutes</strong> daily on screens.</p>
+                    <p><strong>49%</strong> of toddlers (0-2 years old) already use smartphones.</p>
+                    <p>Nearly half <b>(41%)</b> of American teenagers (13-18) have a screen time of more than 8 hours per day.</p>
+                    <p>Entertainment screen time among children in the US has risen from <b>4 hours 44 minutes</b> in 2019 to <b>5 hours 33 minutes</b> in 2021.</p>
                 `);
             } else if (step === 3) {
                 descriptionBox.html(`
-                        <h3>📉 Global Screen Time Changes</h3>
-                        <p>More people are aware of screen time effects post-pandemic.</p>
-                        <p>📊 South Africans, despite the highest usage (9h 24m), reduced it by <strong>14 minutes</strong>.</p>
-                        <p>🌍 UAE saw the biggest increase (+42m), while Romania improved the most (-32m).</p>
+                        <h3>Global Screen Time Changes</h3>
+                        <p>South Africans, despite the highest usage (9h 24m), reduced it by <strong>14 minutes</strong>.</p>
+                        <p>UAE saw the biggest increase (+42m), while Romania improved the most (-32m).</p>
                     `);
                 resetWorldView(() => {
                     mapVisInstance.updateData(countryData2, 'dataset2');
@@ -74,37 +72,34 @@ function executeStep(reverse = false) {
             if (step === 3) {
                 mapVisInstance.updateData(countryData2, 'dataset2');
                 descriptionBox.html(`
-                    <h3>📉 Global Screen Time Changes</h3>
-                    <p>More countries reduced screen time this year.</p>
-                    <p>📊 Romania slashed screen use by <strong>32 minutes</strong>, while UAE increased by <strong>42 minutes</strong>.</p>
-                    <p>🌍 South Africa, despite high usage, improved by <strong>14 minutes</strong>.</p>
-                `);
+                    <h3>Global Screen Time Changes</h3>
+                     <p>South Africans, despite the highest usage (9h 24m), reduced it by <strong>14 minutes</strong>.</p>
+                     <p>UAE saw the biggest increase (+42m), while Romania improved the most (-32m).</p>  `);
             } else if (step === 2) {
                 mapVisInstance.focusOnUS();
                 showDataset1();
                 descriptionBox.html(`
-                    <h3>🇺🇸 USA: Heavy Screen Users</h3>
-                    <p>Americans spend <strong>7 hours 3 minutes</strong> daily on screens.</p>
-                    <p>👶 Almost <strong>49%</strong> of toddlers use smartphones.</p>
-                    <p>📱 Gen Z leads with <strong>9 hours</strong> of screen time per day.</p>
+                    <p style="padding-top: 0"Americans spend <strong>7 hours 3 minutes</strong> daily on screens.</p>
+                    <p><strong>49%</strong> of toddlers (0-2 years old) already use smartphones.</p>
+                    <p>Nearly half <b>(41%)</b> of American teenagers (13-18) have a screen time of more than 8 hours per day.</p>
+                    <p>Entertainment screen time among children in the US has risen from <b>4 hours 44 minutes</b> in 2019 to <b>5 hours 33 minutes</b> in 2021.</p>
                 `);
             } else if (step === 1) {
                 resetWorldView(() => {
                     showTooltipOnJapan();
                     descriptionBox.html(`
-                        <h3>🇯🇵 Japan: The Least Screen Time</h3>
-                        <p>Japanese people have the <strong>lowest</strong> screen time: just <strong>3 hours 56 minutes</strong> daily.</p>
-                        <p>📵 Digital well-being tools and cultural habits contribute to minimal usage.</p>
+                        <h3>Japan: The Least Screen Time</h3>
+                        <p>Japanese people have the <strong>lowest</strong> screen time worldwide, just <strong>3 hours 56 minutes</strong> daily.</p>
+                        <p>Digital well-being tools and cultural habits contribute to minimal usage.</p>
                     `);
                 });
             } else if (step === 0) {
                 removeTooltipOnJapan();
                 showWorldAverage();
                 descriptionBox.html(`
-                    <h3>🌍 Global Screen Time Trends</h3>
-                    <p>The world averages <strong>6 hours 40 minutes</strong> of screen time daily.</p>
-                    <p>📉 Some countries improved: Romania (-32 minutes), Mexico (-30 minutes).</p>
-                    <p>📈 Others increased: UAE (+42 minutes), Russia (+24 minutes).</p>
+                   <p>On average users aged 16 to 64 worldwide spent <b>6 hours and 40 minutes</b> per day on screens across various devices.</p>
+                  <p>That equals to <b>46 hours and 40 minutes</b> for average screen time per week among worldwide internet users.</b></p>
+                  <p>South Africans spend <b>9 hours 24 minutes</b> on their screens each day (that’s 2 hours 44 minutes more than the global average).</p>
                 `);
             }
         }
