@@ -28,6 +28,9 @@ h1 {
     margin-bottom: 20px;
     color: #2a4d69;
 }
+h3 {
+    color: #2e5b80;
+}
 
 h2{
     font-size: 2.5em;
@@ -40,7 +43,9 @@ p {
 }
 
 ul {
-    list-style-type: none;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #4a6fa5;
     padding: 0;
 }
 
@@ -104,6 +109,15 @@ ul li::before {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.description-box {
+    padding: 40px;
+    text-align: center;
+}
+[data-aos] {
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
 
 .title-box h1 {
     font-size: 3em;
@@ -449,5 +463,25 @@ ul li::before {
 
 #toggleViewButton {
     margin-left: 150px;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.visible {
+    animation: fadeUp 0.8s ease-out forwards;
 }
 
