@@ -61,13 +61,34 @@
 
 
     <!-- Slide: Map Visualization -->
-    <div class="section" style="text-align: center;" >
-        <h1>Interactive Map Visualization</h1>
-        <button id="prevButton">Previous</button>
-        <button id="nextButton">Next</button>
+    <div class="section" style="text-align: center;">
+        <h1>How Much Time Do We Spend on Screens?</h1>
 
-        <div id="map-container"></div>
-        <div class="country_tooltip" id="mapTooltip"></div>
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <button id="prevButton" class="btn btn-primary">Previous</button>
+                    <button id="nextButton" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+            <div class="row d-flex align-items-start">
+                <div class="col-md-6" style="width: 50%;">
+                    <div id="map-container"></div>
+                    <div class="country_tooltip" id="mapTooltip"></div>
+                </div>
+
+                <div class="col-md-6" style="width: 30%;">
+                    <div id="map-description" class="map-text">
+                        <h3>🌍 Global Screen Time Trends</h3>
+                        <p>The average person spends <strong>6 hours 40 minutes</strong> on screens daily.</p>
+                        <p>📉 Some countries improved: Romania (-32 minutes), Mexico (-30 minutes).</p>
+                        <p>📈 Others increased: UAE (+42 minutes), Russia (+24 minutes).</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 
 
