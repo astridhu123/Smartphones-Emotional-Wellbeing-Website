@@ -106,14 +106,15 @@ ul li::before {
 
 /* Title Page */
 #introduction {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-image: url('../images/cloud.jpg'); /* Add cloud.jpg as background */
-    background-size: cover;
-    background-position: center;
+    background-image: url('../images/gathering.jpg'); /* Add cloud.jpg as background */
+}
+
+#zoom {
+    background-image: url('../images/zoom.jpg'); /* Add cloud.jpg as background */
+}
+
+#network {
+    background-image: url('../images/bed.jpg'); /* Add cloud.jpg as background */
 }
 
 /* Title Page */
