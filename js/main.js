@@ -51,49 +51,6 @@ d3.json("https://unpkg.com/world-atlas@2.0.2/countries-50m.json").then(geoData =
         console.error("Error loading data:", error);
     });
 });
-let step = 0;
-
-document.getElementById("nextButton").addEventListener("click", () => {
-    if (mapVisInstance) {
-        step = (step + 1) % 3;
-        updateMapState();
-    }
-});
-
-document.getElementById("prevButton").addEventListener("click", () => {
-    if (mapVisInstance) {
-        step = (step - 1 + 3) % 3;
-        if (step === 0) {
-            mapVisInstance.updateData(countryData1, 'dataset1');
-        }
-        updateMapState();
-    }
-});
-
-function updateMapState() {
-    if (step === 0) {
-        mapVisInstance.updateData(countryData1, 'dataset1');
-        d3.select("#world-average").style("display", "block");
-    } else if (step === 1) {
-        mapVisInstance.focusOnUS();
-        mapVisInstance.updateData(countryData1, 'dataset1');
-        d3.select("#world-average").style("display", "none");
-    } else if (step === 2) {
-        mapVisInstance.svg.selectAll(".city-dot").remove();
-        mapVisInstance.svg.selectAll(".city-label").remove();
-        mapVisInstance.resetZoom();
-        mapVisInstance.updateData(countryData2, 'dataset2');
-        d3.select("#world-average").style("display", "none");
-    }
-}
-
-document.getElementById("prevButton").addEventListener("click", () => {
-    if (mapVisInstance && mapVisInstance.zoomedToUS) {
-        mapVisInstance.svg.selectAll(".city-dot").remove();
-        mapVisInstance.svg.selectAll(".city-label").remove();
-        mapVisInstance.resetZoom();
-    }
-});
 
 let emotion_dashboard;
 
