@@ -365,15 +365,6 @@ ul li::before {
     flex: 1;
 }
 
-#map-description {
-    flex: 1;
-    font-size: 20px;
-    line-height: 1.2;
-    padding: 20px;
-    text-align: left;
-    opacity: 1;
-    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-}
 #emotion-description{
     flex: 1;
     font-size: 16px;
