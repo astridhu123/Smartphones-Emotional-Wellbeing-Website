@@ -378,6 +378,14 @@ ul li::before {
     opacity: 1;
     transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
 }
+#emotion-description{
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 20px;
+    text-align: left;
+    opacity: 1;
+}
 .map-text.hide {
     opacity: 0;
     transform: translateY(10px);
@@ -386,5 +394,64 @@ ul li::before {
 .map-text.show {
     opacity: 1;
     transform: translateY(0px);
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filter-card {
+    flex: 1;
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    max-width: 300px;
+}
+
+#emotion-toggle,
+#platform-toggle{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    border-radius: 6px;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.filter-group input[type="checkbox"] {
+    margin-right: 6px;
+    width: 16px;
+    height: 16px;
+}
+
+.filter-group label:hover {
+    background: #e9ecef;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+#toggleViewButton {
+    margin-left: 150px;
 }
 
