@@ -1,12 +1,13 @@
 
 let mapVisInstance;
 let countryData1 = {}, countryData2 = {};
+let isBarChart = true;
 
 d3.json("https://unpkg.com/world-atlas@2.0.2/countries-50m.json").then(geoData => {
     Promise.all([
         d3.csv("data/World Screen Time/data-t0eHz.csv"),
         d3.csv("data/World Screen Time/data-1J1Gs.csv"),
-        d3.csv("data/search terms/Related_Keywords.csv") // Include the third dataset
+        d3.csv("data/search terms/Phrase_Match_Keywords.csv") // Include the third dataset
     ]).then(([dataset1, dataset2, wordCloudData]) => { // Add wordCloudData here
         // Process dataset1 and dataset2
         let values = dataset1.map(d => +d["Time for Datawrapper"]).filter(d => !isNaN(d));
@@ -35,52 +36,20 @@ d3.json("https://unpkg.com/world-atlas@2.0.2/countries-50m.json").then(geoData =
 
         // Initialize the word cloud visualization
         const wordCloud = new WordCloud("word-cloud", wordCloudData);
+        const keywordChart = new KeywordChart("bar-chart", wordCloudData);
+        document.getElementById("switch-button").addEventListener("click", function () {
+            if (isBarChart) {
+                keywordChart.updateScatterPlot();
+                this.textContent = "Switch to Bar Chart";
+            } else {
+                keywordChart.updateBarChart();
+                this.textContent = "Switch to Scatter Plot";
+            }
+            isBarChart = !isBarChart;
+        });
     }).catch(function (error) {
         console.error("Error loading data:", error);
     });
-});
-let step = 0;
-
-document.getElementById("nextButton").addEventListener("click", () => {
-    if (mapVisInstance) {
-        step = (step + 1) % 3;
-        updateMapState();
-    }
-});
-
-document.getElementById("prevButton").addEventListener("click", () => {
-    if (mapVisInstance) {
-        step = (step - 1 + 3) % 3;
-        if (step === 0) {
-            mapVisInstance.updateData(countryData1, 'dataset1');
-        }
-        updateMapState();
-    }
-});
-
-function updateMapState() {
-    if (step === 0) {
-        mapVisInstance.updateData(countryData1, 'dataset1');
-        d3.select("#world-average").style("display", "block");
-    } else if (step === 1) {
-        mapVisInstance.focusOnUS();
-        mapVisInstance.updateData(countryData1, 'dataset1');
-        d3.select("#world-average").style("display", "none");
-    } else if (step === 2) {
-        mapVisInstance.svg.selectAll(".city-dot").remove();
-        mapVisInstance.svg.selectAll(".city-label").remove();
-        mapVisInstance.resetZoom();
-        mapVisInstance.updateData(countryData2, 'dataset2');
-        d3.select("#world-average").style("display", "none");
-    }
-}
-
-document.getElementById("prevButton").addEventListener("click", () => {
-    if (mapVisInstance && mapVisInstance.zoomedToUS) {
-        mapVisInstance.svg.selectAll(".city-dot").remove();
-        mapVisInstance.svg.selectAll(".city-label").remove();
-        mapVisInstance.resetZoom();
-    }
 });
 
 let emotion_dashboard;
@@ -282,6 +251,8 @@ function logSearchToggleStatus(data) {
     // Update visualization with filtered data
     searchTrendGraph.selectionChanged(filteredData);
 }
+
+
 
 // Handle dot clicks
 dots.forEach(dot => {

@@ -63,13 +63,34 @@
 
 
     <!-- Slide: Map Visualization -->
-    <div class="section" style="text-align: center;" >
-        <h1>Interactive Map Visualization</h1>
-        <button id="prevButton">Previous</button>
-        <button id="nextButton">Next</button>
+    <div class="section" style="text-align: center;">
+        <h1>How Much Time Do We Spend on Screens?</h1>
 
-        <div id="map-container"></div>
-        <div class="country_tooltip" id="mapTooltip"></div>
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <button id="prevButton" class="btn btn-primary">Previous</button>
+                    <button id="nextButton" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+            <div class="row d-flex align-items-start">
+                <div class="col-md-6" style="width: 50%;">
+                    <div id="map-container"></div>
+                    <div class="country_tooltip" id="mapTooltip"></div>
+                </div>
+
+                <div class="col-md-6" style="width: 30%;">
+                    <div id="map-description" class="map-text">
+                        <h3>🌍 Global Screen Time Trends</h3>
+                        <p>The average person spends <strong>6 hours 40 minutes</strong> on screens daily.</p>
+                        <p>📉 Some countries improved: Romania (-32 minutes), Mexico (-30 minutes).</p>
+                        <p>📈 Others increased: UAE (+42 minutes), Russia (+24 minutes).</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 
 
@@ -77,7 +98,6 @@
     <div class="section">
         <div class="visualization-page">
             <h1>Popular Mental Health Keywords</h1>
-            <p class="align-left">Search Volume on a scale from 1 to 100, where 1 represents the least searched and 100 represents the most searched.</p>
             <div id="word-cloud"></div>
         </div>
     </div>
@@ -155,45 +175,90 @@
 
     <!-- Slide: Emotional Dashboard Visualization -->
     <div class="section">
+        <div class="container">
+            <h1 style="text-align: center;">How Social Media Shapes Our Emotions</h1>
+            <div class="row d-flex align-items-start">
 
-        <div class="row">
-            <div id="emotion-dashboard" style="text-align: center;">
-                <h1> Emotional Dashboard</h1>
-                <!-- COLUMN ONE WITH TOGGLES -->
-                <div class="med-col-1">
-                    <div id="controls">
-                        <p>Toggle Emotions</p>
-                        <div id="emotion-toggle">
-                            <label><input type="checkbox" id="Sadness" checked> Sadness</label>
-                            <label><input type="checkbox" id="Anger" checked> Anger</label>
-                            <label><input type="checkbox" id="Anxiety" checked> Anxiety</label>
-                            <label><input type="checkbox" id="Neutral" checked> Neutral</label>
-                            <label><input type="checkbox" id="Happiness" checked> Happiness</label>
-                            <label><input type="checkbox" id="Boredom" checked> Boredom</label>
-                        </div>
-                        <br>
-                        <p>Toggle Platforms:</p>
-                        <div id="platform-toggle">
-                            <label><input type="checkbox" id="Instagram" checked> Instagram</label>
-                            <label><input type="checkbox" id="Twitter" checked> Twitter</label>
-                            <label><input type="checkbox" id="Facebook" checked> Facebook</label>
-                            <label><input type="checkbox" id="Whatsapp" checked> Whatsapp</label>
-                            <label><input type="checkbox" id="Telegram" checked> Telegram</label>
-                            <label><input type="checkbox" id="Snapchat" checked> Snapchat</label>
-                            <label><input type="checkbox" id="LinkedIn" checked> LinkedIn</label>
-                        </div>
-                    </div>
-                </div>
-                <!-- LARGER COLUMN 2 WITH GRAPHIC -->
-                <div class="med-col-10">
-                    <button id="toggleViewButton">Switch to Bar Chart</button>
+                <div class="col-md-6">
+                    <!-- Visualization Chart -->
+                    <button id="toggleViewButton" class="btn btn-primary mt-3">Switch to Bar Chart</button>
                     <div id="emotion-graphic"></div>
                 </div>
 
+                <!-- Right Side: Description -->
+                <div class="col-md-6">
+                    <div class="filter-container">
+                        <div class="filter-card">
+                            <h4>🎭 Toggle Emotions</h4>
+                            <div id="emotion-toggle" class="filter-group">
+                                <label><input type="checkbox" id="Sadness" checked> 😢 Sadness</label>
+                                <label><input type="checkbox" id="Anger" checked> 😡 Anger</label>
+                                <label><input type="checkbox" id="Anxiety" checked> 😰 Anxiety</label>
+                                <label><input type="checkbox" id="Neutral" checked> 😐 Neutral</label>
+                                <label><input type="checkbox" id="Happiness" checked> 😊 Happiness</label>
+                                <label><input type="checkbox" id="Boredom" checked> 😴 Boredom</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-card">
+                            <h4>📱 Toggle Platforms</h4>
+                            <div id="platform-toggle" class="filter-group">
+                                <label><input type="checkbox" id="Instagram" checked> Instagram</label>
+                                <label><input type="checkbox" id="Twitter" checked> Twitter</label>
+                                <label><input type="checkbox" id="Facebook" checked> Facebook</label>
+                                <label><input type="checkbox" id="Whatsapp" checked> Whatsapp</label>
+                                <label><input type="checkbox" id="Telegram" checked> Telegram</label>
+                                <label><input type="checkbox" id="Snapchat" checked> Snapchat</label>
+                                <label><input type="checkbox" id="LinkedIn" checked> LinkedIn</label> </div>
+                        </div>
+                    </div>
+                    <div id="emotion-description" class="dashboard-description">
+                        <p>
+                            Ever wonder how different platforms affect your mood? This visualization reveals striking emotional patterns across social media:
+                        </p>
+                        <ul style="list-style-type: disc">
+                            <li><b>Twitter & Facebook</b> spark the most <b>anger, sadness and anxiety</b>, reflecting their role in heated debates and news discussions.</li>
+                            <li><b>Instagram & Snapchat</b> lean towards <b>happiness</b>, emphasizing entertainment and escapism.</li>
+                            <li><b>WhatsApp & Telegram</b> offer a <b>balanced emotional mix</b>, fostering personal conversations with less emotional extremes.</li>
+                            <li><b>LinkedIn</b> remains the most <b>neutral</b>, as professional networking often avoids strong emotional swings.</li>
+                        </ul>
+                        <p>
+                            <b>Platforms we choose influence how we feel</b>—whether fueling stress, sparking joy, or keeping us neutral.
+                            So, next time you scroll, consider:
+                        </p>
+                        <p>
+                            <b style="font-size: 20px">How is this shaping your emotions?</b>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+
+    <!-- Slide: Bar Chart and Scatter Plot Visualization -->
+
+    <div class="section">
+
+        <div id="visualization-container">
+            <div id="chart-container">
+                <div id="bar-chart"></div>
+                <div id="scatter-plot" style="display: none;"></div>
+                <button id="switch-button">Switch to Scatter Plot</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide:  Bar Chart and Scatter Plot Visualization Explanation Page-->
+    <div class="section">
+        <div class="facts-page">
+            <h1>Implications for Mental Health Resources</h1>
+            <p>The search volume patterns indicate that <b>people are seeking mental health guidance</b>,</p>
+            <p>but the extent to which <u>they find trusted resources varies based on the establishment of the websites</u>.</p>
+            <p>Well-established websites are clearly central to providing information on emotional well-being,</p>
+            <p>yet it may be important to consider how these platforms can adapt to the changing landscape of smartphone usage.</p>
+        </div>
+    </div>
     <!-- Slide: Conclusion Slide -->
     <div class="section">
         <div class="title-page" style="background-image: url('images/boy.png');">
@@ -236,6 +301,8 @@
 <script src="js/search-trends.js"></script>
 <script src="js/pandemic-health.js"></script>
 <script src="js/university-mental-health.js"></script>
+<script src="js/map-actions.js"></script>
+<script src="js/keyword-chart.js"></script>
 
 <!-- Load data, create visualizations -->
 <script src="js/main.js"></script>

@@ -45,7 +45,8 @@ class WordCloud {
         // Convert search volume to a numeric value
         vis.displayData = vis.data.map(d => ({
             text: d.Keyword,
-            size: +d["Search Volume"]
+            size: +d["Search Volume"],
+            Search_Volume: +d["Search Volume"] // Ensure Search_Volume is correctly assigned
         }));
 
         // Update visualization
@@ -94,7 +95,7 @@ class WordCloud {
             .on("mouseover", function (event, d) {
                 // Show tooltip on hover
                 vis.tooltip.style("visibility", "visible")
-                    .html(`<strong>${d.text}</strong><br>Search Volume: ${d.size}`);
+                    .html(`<strong>${d.text}</strong><br>Search Volume: ${d.Search_Volume}`);
             })
             .on("mousemove", function (event) {
                 // Move tooltip with mouse
@@ -107,5 +108,4 @@ class WordCloud {
             });
         console.log("Word Positions:", words);
     }
-
 }
