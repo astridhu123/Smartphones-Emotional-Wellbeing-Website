@@ -85,8 +85,6 @@ document.getElementById("prevButton").addEventListener("click", () => {
 
 let emotion_dashboard;
 
-load_emotion_data();
-
 function load_emotion_data() {
     Promise.all([
         d3.csv("data/App Usage and Emotions Datasets/train.csv"),
@@ -112,6 +110,98 @@ function load_emotion_data() {
     });
 }
 
+// Load in the Data for the Pandemic Chart
+let pandemic_data;
+let pandemic_chart;
+
+function load_pandemic_data() {
+    Promise.all([
+        d3.csv("data/A pandemic of Mental Health/Reported Anxiety and Depression Symptoms/anx_and_dep/anx_or_dep_2019_vs_2020.csv"),
+    ]).then(datasets => {
+
+        let data = datasets[0];
+
+        data.forEach(row => {
+            row.year = +row.year;
+            row.value = +row.value;
+        });
+
+        // console.log("Pandemic Data", data);
+
+        pandemic_chart = new PandemicHealthChart("pandemic-chart", data);
+    });
+}
+
+
+// Search Trend Graph Visualization
+let searchTrendGraph;
+
+function load_search_trend_data() {
+    // Array of file names (without extension)
+    const datasetNames = [
+        "Anxiety", 
+        "Counselling", 
+        "Depression", 
+        "Loneliness", 
+        "Mental_Health_Support", 
+        "Mental_Illness", 
+        "Pandemic", 
+        "Screen_Time"
+    ];
+
+    Promise.all([
+        d3.csv("data/Google Search Trends/anxiety_search_trends.csv"),
+        d3.csv("data/Google Search Trends/counselling_search_trends.csv"),
+        d3.csv("data/Google Search Trends/depression_search_trends.csv"),
+        d3.csv("data/Google Search Trends/lonliness_search_trends.csv"),
+        d3.csv("data/Google Search Trends/mental_health_support_search_trends.csv"),
+        d3.csv("data/Google Search Trends/mental_illness_search_trends.csv"),
+        d3.csv("data/Google Search Trends/pandemic_search_trends.csv"),
+        d3.csv("data/Google Search Trends/screen_time_search_trends.csv")
+    ]).then(datasets => {
+
+        let parseDate = d3.timeParse("%Y-%m");
+
+        datasets.forEach((dataset, index) => {
+            // Assign a name from datasetNames based on index
+            dataset.name = datasetNames[index]; // e.g., "Anxiety", "Counselling", etc.
+
+            dataset.forEach(row => {
+                // Parse date and value (second entry as integer)
+                row.date = parseDate(row[Object.keys(row)[0]]);
+                row[Object.keys(row)[1]] = parseInt(row[Object.keys(row)[1]], 10);
+            
+                // Add a category field with the dataset's name
+                row.category = dataset.name;
+            });
+        });
+
+        let combinedData = datasets.map((dataset, index) => {
+            // Replace `Value` with the name of the dataset
+            return dataset.map(row => {
+                // Replace `Value` with the name of the dataset
+                let newRow = { ...row, [dataset.name]: row.Value };
+                // delete newRow.Value; // Remove the original `Value` key
+                return newRow;
+            });
+        }).flat(); 
+
+        console.log("Datasets", combinedData);
+
+        searchTrendGraph = new SearchTrendGraph("google-search-trends", combinedData);
+        logSearchToggleStatus(searchTrendGraph.data);
+    });
+}
+
+// LOAD ALL FUNCTIONS =============================================================================================================
+load_pandemic_data();
+load_search_trend_data();
+load_emotion_data();
+
+
+
+
+// EVENT LISTENERS ================================================================================================================
 
 // Create event listener to detect changes in both emotion and platform toggles
 d3.select("#emotion-toggle").on("change", function() {
@@ -162,6 +252,35 @@ function logToggleStatus(data) {
     // console.log("Filtered Data: ", filteredData);
 
     emotion_dashboard.selectionChanged(filteredData);
+}
+
+
+d3.selectAll("#search-toggle input[type='checkbox']").on("change", function() {
+    console.log("Changing search terms...");
+    logSearchToggleStatus(searchTrendGraph.data);
+});
+
+function logSearchToggleStatus(data) {
+
+    let searchToggles = document.querySelectorAll('#search-toggle input[type="checkbox"]');
+    let selectedCategories = [];
+
+    // Collect checked categories by removing the 'toggle-' prefix
+    searchToggles.forEach(toggle => {
+        if (toggle.checked) {
+            let categoryName = toggle.id.replace("toggle-", ""); // Remove 'toggle-' prefix
+            selectedCategories.push(categoryName);
+        }
+    });
+
+    // Filter data based on selected categories
+    const filteredData = data.filter(row => selectedCategories.includes(row.category));
+
+    console.log("selected", selectedCategories);
+    console.log(filteredData);
+
+    // Update visualization with filtered data
+    searchTrendGraph.selectionChanged(filteredData);
 }
 
 // Handle dot clicks
