@@ -5,6 +5,25 @@ button {
     cursor: pointer;
 }
 
+#pandemic-chart-row {
+    display: flex; /* Forces the items to be in a row */
+    justify-content: space-between; /* Ensures they don't overlap */
+    align-items: flex-start; /* Aligns them at the top */
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.col-md-6 {
+    flex: 1; 
+    max-width: 48%; 
+    box-sizing: border-box; 
+    padding: 10px; 
+}
+
+#pandemic-chart {
+    width: 100%;
+    height: 100%;
+}
+
 .country_tooltip {
     position: absolute;
     background-color: white;
@@ -83,6 +102,18 @@ ul li::before {
 
 .slide:not(.active) {
     transform: translateY(100%);
+}
+
+/* Title Page */
+#introduction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('../images/cloud.jpg'); /* Add cloud.jpg as background */
+    background-size: cover;
+    background-position: center;
 }
 
 /* Title Page */
