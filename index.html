@@ -138,41 +138,62 @@
 
     <!-- Slide: Emotional Dashboard Visualization -->
     <div class="section">
+        <div class="container">
+            <h1 style="text-align: center;">How Social Media Shapes Our Emotions</h1>
+            <div class="row d-flex align-items-start">
 
-        <div class="row">
-            <div id="emotion-dashboard" style="text-align: center;">
-                <h1> Emotional Dashboard</h1>
-                <!-- COLUMN ONE WITH TOGGLES -->
-                <div class="med-col-1">
-                    <div id="controls">
-                        <p>Toggle Emotions</p>
-                        <div id="emotion-toggle">
-                            <label><input type="checkbox" id="Sadness" checked> Sadness</label>
-                            <label><input type="checkbox" id="Anger" checked> Anger</label>
-                            <label><input type="checkbox" id="Anxiety" checked> Anxiety</label>
-                            <label><input type="checkbox" id="Neutral" checked> Neutral</label>
-                            <label><input type="checkbox" id="Happiness" checked> Happiness</label>
-                            <label><input type="checkbox" id="Boredom" checked> Boredom</label>
-                        </div>
-                        <br>
-                        <p>Toggle Platforms:</p>
-                        <div id="platform-toggle">
-                            <label><input type="checkbox" id="Instagram" checked> Instagram</label>
-                            <label><input type="checkbox" id="Twitter" checked> Twitter</label>
-                            <label><input type="checkbox" id="Facebook" checked> Facebook</label>
-                            <label><input type="checkbox" id="Whatsapp" checked> Whatsapp</label>
-                            <label><input type="checkbox" id="Telegram" checked> Telegram</label>
-                            <label><input type="checkbox" id="Snapchat" checked> Snapchat</label>
-                            <label><input type="checkbox" id="LinkedIn" checked> LinkedIn</label>
-                        </div>
-                    </div>
-                </div>
-                <!-- LARGER COLUMN 2 WITH GRAPHIC -->
-                <div class="med-col-10">
-                    <button id="toggleViewButton">Switch to Bar Chart</button>
+                <div class="col-md-6">
+                    <!-- Visualization Chart -->
+                    <button id="toggleViewButton" class="btn btn-primary mt-3">Switch to Bar Chart</button>
                     <div id="emotion-graphic"></div>
                 </div>
 
+                <!-- Right Side: Description -->
+                <div class="col-md-6">
+                    <div class="filter-container">
+                        <div class="filter-card">
+                            <h4>🎭 Toggle Emotions</h4>
+                            <div id="emotion-toggle" class="filter-group">
+                                <label><input type="checkbox" id="Sadness" checked> 😢 Sadness</label>
+                                <label><input type="checkbox" id="Anger" checked> 😡 Anger</label>
+                                <label><input type="checkbox" id="Anxiety" checked> 😰 Anxiety</label>
+                                <label><input type="checkbox" id="Neutral" checked> 😐 Neutral</label>
+                                <label><input type="checkbox" id="Happiness" checked> 😊 Happiness</label>
+                                <label><input type="checkbox" id="Boredom" checked> 😴 Boredom</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-card">
+                            <h4>📱 Toggle Platforms</h4>
+                            <div id="platform-toggle" class="filter-group">
+                                <label><input type="checkbox" id="Instagram" checked> Instagram</label>
+                                <label><input type="checkbox" id="Twitter" checked> Twitter</label>
+                                <label><input type="checkbox" id="Facebook" checked> Facebook</label>
+                                <label><input type="checkbox" id="Whatsapp" checked> Whatsapp</label>
+                                <label><input type="checkbox" id="Telegram" checked> Telegram</label>
+                                <label><input type="checkbox" id="Snapchat" checked> Snapchat</label>
+                                <label><input type="checkbox" id="LinkedIn" checked> LinkedIn</label> </div>
+                        </div>
+                    </div>
+                    <div id="emotion-description" class="dashboard-description">
+                        <p>
+                            Ever wonder how different platforms affect your mood? This visualization reveals striking emotional patterns across social media:
+                        </p>
+                        <ul style="list-style-type: disc">
+                            <li><b>Twitter & Facebook</b> spark the most <b>anger, sadness and anxiety</b>, reflecting their role in heated debates and news discussions.</li>
+                            <li><b>Instagram & Snapchat</b> lean towards <b>happiness</b>, emphasizing entertainment and escapism.</li>
+                            <li><b>WhatsApp & Telegram</b> offer a <b>balanced emotional mix</b>, fostering personal conversations with less emotional extremes.</li>
+                            <li><b>LinkedIn</b> remains the most <b>neutral</b>, as professional networking often avoids strong emotional swings.</li>
+                        </ul>
+                        <p>
+                            <b>Platforms we choose influence how we feel</b>—whether fueling stress, sparking joy, or keeping us neutral.
+                            So, next time you scroll, consider:
+                        </p>
+                        <p>
+                            <b style="font-size: 20px">How is this shaping your emotions?</b>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
