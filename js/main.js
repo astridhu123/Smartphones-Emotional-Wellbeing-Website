@@ -155,7 +155,7 @@ function load_search_trend_data() {
             });
         }).flat(); 
 
-        console.log("Datasets", combinedData);
+        // console.log("Datasets", combinedData);
 
         searchTrendGraph = new SearchTrendGraph("google-search-trends", combinedData);
         logSearchToggleStatus(searchTrendGraph.data);
@@ -245,8 +245,8 @@ function logSearchToggleStatus(data) {
     // Filter data based on selected categories
     const filteredData = data.filter(row => selectedCategories.includes(row.category));
 
-    console.log("selected", selectedCategories);
-    console.log(filteredData);
+    // console.log("selected", selectedCategories);
+    // console.log(filteredData);
 
     // Update visualization with filtered data
     searchTrendGraph.selectionChanged(filteredData);
