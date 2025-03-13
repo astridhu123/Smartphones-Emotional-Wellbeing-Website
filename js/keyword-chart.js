@@ -11,8 +11,8 @@ class KeywordChart {
         let vis = this;
 
         // Set up margins and dimensions
-        vis.margin = { top: 120, right: 200, bottom: 90, left: 200 };
-        vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
+        vis.margin = { top: 120, right: 300, bottom: 90, left: 200 }; // Increase right margin
+        vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right; // Decrease width
         vis.height = 400 - vis.margin.top - vis.margin.bottom;
 
         // Create SVG container
@@ -170,6 +170,10 @@ class KeywordChart {
             .attr("text-anchor", "middle")
             .style("fill", "#2a4d69")
             .text("Total Keywords Searched by Website Establishment Level in Mental Health");
+
+        // Add legend
+        vis.createBarChartLegend();
+
     }
 
     updateScatterPlot() {
@@ -269,5 +273,113 @@ class KeywordChart {
             .attr("text-anchor", "middle")
             .style("fill", "#2a4d69")
             .text("Mental Health Keyword Search Volume Across Website Establishment Levels");
+
+        // Add legend
+        vis.createScatterPlotLegend();
+    }
+
+    createBarChartLegend() {
+        let vis = this;
+
+        // Define legend data
+        const legendData = [
+            { label: "Less Established Websites: Websites with less authority or recognition in mental health coverage", color: "#F1C40F" },
+            { label: "Somewhat Established Websites: Websites with moderate authority in the field", color: "#B09CFF" },
+            { label: "Well-Established Websites: Highly recognized websites with strong authority in mental health coverage", color: "#60BA46" },
+            { label: "Very Well-Established Websites: Dominant websites with extensive authority and presence in mental health coverage", color: "#14C7DE" }
+        ];
+
+        // Create legend group
+        const legend = vis.svg.append("g")
+            .attr("class", "legend")
+            .attr("transform", `translate(${vis.width + 20}, 0)`);
+
+        // Add legend items
+        legend.selectAll(".legend-item")
+            .data(legendData)
+            .enter()
+            .append("g")
+            .attr("class", "legend-item")
+            .attr("transform", (d, i) => `translate(0, ${i * 60})`) // Increased spacing (changed 40 to 60)
+            .each(function (d) {
+                const item = d3.select(this);
+
+                // Add rectangle (color indicator)
+                item.append("rect")
+                    .attr("width", 15)
+                    .attr("height", 15)
+                    .attr("fill", d.color)
+                    .attr("y", 0); // Align rectangle with the text
+
+                // Split the label into multiple lines
+                const text = item.append("text")
+                    .attr("x", 25) // Position text to the right of the rectangle
+                    .attr("y", 12) // Align text with the rectangle
+                    .style("font-size", "12px");
+
+                const words = d.label.split(" ");
+                let line = [];
+                let lineNumber = 0;
+                const lineHeight = 1.2; // Adjust line height as needed
+                const maxWidth = 200; // Maximum width of each line (adjust as needed)
+
+                words.forEach(word => {
+                    line.push(word);
+                    const testLine = line.join(" ");
+                    const testText = text.append("tspan").text(testLine);
+                    if (testText.node().getComputedTextLength() > maxWidth) {
+                        line.pop(); // Remove the last word that caused the overflow
+                        text.append("tspan")
+                            .attr("x", 25) // Align wrapped lines with the first line
+                            .attr("dy", `${lineHeight}em`)
+                            .text(line.join(" "));
+                        line = [word]; // Start a new line with the current word
+                        lineNumber++;
+                    }
+                    testText.remove();
+                });
+
+                // Add the remaining words as the last line
+                text.append("tspan")
+                    .attr("x", 25)
+                    .attr("dy", `${lineHeight}em`)
+                    .text(line.join(" "));
+            });
+    }
+    createScatterPlotLegend() {
+        let vis = this;
+
+        // Define legend data
+
+        const legendData = [
+            { label: "1-25: Less Established Websites", color: "#F1C40F" },
+            { label: "26-50: Somewhat Established Websites", color: "#B09CFF" },
+            { label: "51-75: Well-Established Websites", color: "#60BA46" },
+            { label: "76-100: Very Well-Established Websites", color: "#14C7DE" }
+        ];
+
+        // Create legend group
+        const legend = vis.svg.append("g")
+            .attr("class", "legend")
+            .attr("transform", `translate(${vis.width + 20}, 0)`);
+
+        // Add legend items
+        legend.selectAll(".legend-item")
+            .data(legendData)
+            .enter()
+            .append("g")
+            .attr("class", "legend-item")
+            .attr("transform", (d, i) => `translate(0, ${i * 30})`)
+            .each(function (d) {
+                const item = d3.select(this);
+                item.append("circle")
+                    .attr("r", 10)
+                    .attr("fill", d.color);
+                item.append("text")
+                    .attr("x", 15)
+                    .attr("y", 10)
+                    .text(d.label)
+                    .style("font-size", "12px");
+            });
     }
 }
