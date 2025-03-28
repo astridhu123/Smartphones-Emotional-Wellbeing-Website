@@ -104,6 +104,7 @@ function load_pandemic_data() {
 
 // Search Trend Graph Visualization
 let searchTrendGraph;
+let brush;
 
 function load_search_trend_data() {
     // Array of file names (without extension)
@@ -155,10 +156,13 @@ function load_search_trend_data() {
             });
         }).flat(); 
 
-        // console.log("Datasets", combinedData);
+        console.log("Datasets", combinedData);
 
         searchTrendGraph = new SearchTrendGraph("google-search-trends", combinedData);
         logSearchToggleStatus(searchTrendGraph.data);
+
+        console.log("Creating brush...");
+        brush = new BrushVis("brush", combinedData, searchTrendGraph);
     });
 }
 
@@ -219,10 +223,9 @@ function logToggleStatus(data) {
 
     // Log the filtered data
     // console.log("Filtered Data: ", filteredData);
-
+    
     emotion_dashboard.selectionChanged(filteredData);
 }
-
 
 d3.selectAll("#search-toggle input[type='checkbox']").on("change", function() {
     console.log("Changing search terms...");
@@ -230,29 +233,33 @@ d3.selectAll("#search-toggle input[type='checkbox']").on("change", function() {
 });
 
 function logSearchToggleStatus(data) {
+    let selectedCategories = getActiveToggles();
 
+    // Filter the data based on selected categories
+    const filteredData = data.filter(row => selectedCategories.includes(row.category));
+
+    // Update search trend graph
+    searchTrendGraph.selectionChanged(filteredData);
+
+    // If brush is active, apply it to the filtered data
+    if (brush) {
+        brush.applyCurrentBrush();
+    }
+}
+
+function getActiveToggles() {
     let searchToggles = document.querySelectorAll('#search-toggle input[type="checkbox"]');
     let selectedCategories = [];
 
-    // Collect checked categories by removing the 'toggle-' prefix
     searchToggles.forEach(toggle => {
         if (toggle.checked) {
-            let categoryName = toggle.id.replace("toggle-", ""); // Remove 'toggle-' prefix
+            let categoryName = toggle.id.replace("toggle-", "");
             selectedCategories.push(categoryName);
         }
     });
 
-    // Filter data based on selected categories
-    const filteredData = data.filter(row => selectedCategories.includes(row.category));
-
-    // console.log("selected", selectedCategories);
-    // console.log(filteredData);
-
-    // Update visualization with filtered data
-    searchTrendGraph.selectionChanged(filteredData);
+    return selectedCategories;
 }
-
-
 
 // Handle dot clicks
 dots.forEach(dot => {
