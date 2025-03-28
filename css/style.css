@@ -111,15 +111,24 @@ ul li::before {
 
 /* Title Page */
 #introduction {
-    background-image: url('../images/gathering.jpg'); /* Add cloud.jpg as background */
+    /* background-image: url('../images/gathering.jpg'); Add cloud.jpg as background */
+    background-image: url('../images/wallpapers/ford.png');
 }
 
 #zoom {
-    background-image: url('../images/zoom.jpg'); /* Add cloud.jpg as background */
+    /* background-image: url('../images/zoom.jpg');  */
+    /* background-image: url('../images/wallpapers/zoom.png'); */
+    background-image: url('../images/wallpapers/zoom colorful.png');
 }
 
 #network {
-    background-image: url('../images/bed.jpg'); /* Add cloud.jpg as background */
+    /* background-image: url('../images/bed.jpg'); Add cloud.jpg as background */
+    background-image: url('../images/wallpapers/wallpaper phone brain.png');
+}
+
+#emotion {
+    /* background-image: url('../images/bed.jpg'); Add cloud.jpg as background */
+    background-image: url('../images/wallpapers/social media.png');
 }
 
 /* Title Page */
@@ -129,7 +138,9 @@ ul li::before {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url('../images/cloud.jpg'); /* Add cloud.jpg as background */
+    /* background-image: url('../images/cloud.jpg');  */
+    background-image: url('../images/wallpapers/cover 1.png');
+    /* background-image: url('../images/wallpapers/cover 2.png'); */
     background-size: cover;
     background-position: center;
 }
