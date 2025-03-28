@@ -1,5 +1,3 @@
-// Path to file: data\A pandemic of Mental Health\Reported Anxiety and Depression Symptoms\anx_and_dep\anx_or_dep_2019_vs_2020.csv
-
 class PandemicHealthChart {
 
     constructor(parentElement, data) {
@@ -25,12 +23,20 @@ class PandemicHealthChart {
         vis.width = 600;
         vis.height = 500;
 
+        // vis.svg = d3.select("#" + vis.parentElement)
+        //     .append("svg")
+        //     .attr("width", vis.width + vis.margin.left + vis.margin.right)
+        //     .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+        //     .append("g")
+        //     .attr("transform", "translate(" + (vis.margin.left) + "," + vis.margin.top + ")"); 
+
         vis.svg = d3.select("#" + vis.parentElement)
             .append("svg")
-            .attr("width", vis.width + vis.margin.left + vis.margin.right)
+            .attr("width", vis.width + vis.margin.left + vis.margin.right + 100) // Increase width to accommodate shift
             .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
             .append("g")
-            .attr("transform", "translate(" + (vis.margin.left) + "," + vis.margin.top + ")"); 
+            .attr("transform", "translate(" + (vis.margin.left + 100) + "," + vis.margin.top + ")"); // Shift right by 100px
+
 
         vis.tooltip = d3.select("#" + vis.parentElement)
             .append("div")

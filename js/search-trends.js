@@ -97,8 +97,31 @@ class SearchTrendGraph {
                 .attr("font-size", "12px")
                 .attr("alignment-baseline", "middle");
         });
+
+        // // Define the brush
+        // vis.brush = d3.brushX()
+        // .extent([[0, 0], [vis.width, vis.height]])
+        // .on("brush end", function(event) {
+        //     vis.brushed(event);
+        // });
+
+        // // Append brush to SVG
+        // vis.brushGroup = vis.svg.append("g")
+        // .attr("class", "brush")
+        // .call(vis.brush);
+
         // this.wrangleData();
     }
+
+    // brushed(event) {
+    //     let vis = this;
+    //     if (event.selection) {
+    //         let [x0, x1] = event.selection.map(vis.x.invert); // Convert pixel range to date range
+    //         vis.displayData = vis.data.filter(d => d.date >= x0 && d.date <= x1);
+    //         vis.wrangleData(); // Update visualization
+    //     }
+    // }
+    
 
     wrangleData() {
         let vis = this;
