@@ -139,6 +139,7 @@ ul li::before {
     background-image: url('../images/wallpapers/social media.png');
 }
 
+
 .title-page {
     display: flex;
     flex-direction: column;
@@ -167,7 +168,6 @@ ul li::before {
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-
 .title-box h1 {
     font-size: 3em;
     color: #2a4d69;
@@ -192,6 +192,25 @@ ul li::before {
 
 .highlight {
     background-color: rgb(241, 196, 15, 0.3); /* Transparent yellow with 30% opacity */
+}
+
+.highlight-Sadness {
+    background-color: rgb(0, 0, 255, 0.3); /* Transparent yellow with 30% opacity */
+}
+.highlight-Anger {
+    background-color: rgb(255, 0, 0, 0.3); /* Transparent yellow with 30% opacity */
+}
+.highlight-Anxiety {
+    background-color: rgb(255, 165, 0, 0.3); /* Transparent yellow with 30% opacity */
+}
+.highlight-Neutral {
+    background-color: rgb(144, 238, 144, 0.3); /* Transparent yellow with 30% opacity */
+}
+.highlight-Happiness {
+    background-color: rgb(255, 182, 193, 0.3); /* Transparent yellow with 30% opacity */
+}
+.highlight-Boredom {
+    background-color: rgb(211, 211, 211, 0.3); /* Transparent yellow with 30% opacity */
 }
 
 /* Title Box Style 3 */
