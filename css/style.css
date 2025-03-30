@@ -5,6 +5,8 @@ button {
     cursor: pointer;
 }
 
+/* Pandemic Chart */
+
 #pandemic-chart-row {
     display: flex; /* Forces the items to be in a row */
     justify-content: space-between; /* Ensures they don't overlap */
@@ -33,6 +35,12 @@ button {
     display: none;
 }
 
+blockquote {
+    border-left: 4px solid #2a4d69;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #555;
+}
 /* General Styles */
 body {
     font-family: 'M PLUS Rounded 1c', Arial, sans-serif;
@@ -131,7 +139,7 @@ ul li::before {
     background-image: url('../images/wallpapers/social media.png');
 }
 
-/* Title Page */
+
 .title-page {
     display: flex;
     flex-direction: column;
@@ -152,7 +160,6 @@ ul li::before {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 .description-box {
     padding: 40px;
     text-align: center;
@@ -160,7 +167,6 @@ ul li::before {
 [data-aos] {
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-
 
 .title-box h1 {
     font-size: 3em;
@@ -173,6 +179,55 @@ ul li::before {
     color: #4a6fa5;
 }
 
+/* Title Box Style 2 */
+.title-box-2 {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    border: 2px solid #2a4d69; /* Add a contrasting border */
+    color: #2a4d69; /* Use a dark color for text to make it stand out */
+}
+
+.highlight {
+    background-color: rgb(241, 196, 15, 0.3); /* Transparent yellow with 30% opacity */
+}
+
+.highlight-Sadness {
+    background-color: rgb(0, 0, 255, 0.3); /* Transparent yellow with 30% opacity */
+}
+.highlight-Anger {
+    background-color: rgb(255, 0, 0, 0.3); /* Transparent yellow with 30% opacity */
+}
+.highlight-Anxiety {
+    background-color: rgb(255, 165, 0, 0.3); /* Transparent yellow with 30% opacity */
+}
+.highlight-Neutral {
+    background-color: rgb(144, 238, 144, 0.3); /* Transparent yellow with 30% opacity */
+}
+.highlight-Happiness {
+    background-color: rgb(255, 182, 193, 0.3); /* Transparent yellow with 30% opacity */
+}
+.highlight-Boredom {
+    background-color: rgb(211, 211, 211, 0.3); /* Transparent yellow with 30% opacity */
+}
+
+/* Title Box Style 3 */
+
+.title-box-3 p {
+    font-size: 1.5em;
+    color: #ffffff;
+}
+.title-box-3 {
+    background: rgb(157, 187, 216); /* Gradient background 9DBBD8 3498DBFF */
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    border: 2px solid #2c3e50; /* Dark border to make it pop */
+}
 /* Hook Page */
 .hook-page {
     display: flex;
