@@ -283,11 +283,12 @@ class KeywordChart {
 
         // Define legend data
         const legendData = [
-            { label: "Less Established Websites: Websites with less authority or recognition in mental health coverage", color: "#F1C40F" },
-            { label: "Somewhat Established Websites: Websites with moderate authority in the field", color: "#B09CFF" },
-            { label: "Well-Established Websites: Highly recognized websites with strong authority in mental health coverage", color: "#60BA46" },
-            { label: "Very Well-Established Websites: Dominant websites with extensive authority and presence in mental health coverage", color: "#14C7DE" }
+            { label: "Less Established: Websites with low authority in mental health", color: "#F1C40F" },
+            { label: "Somewhat Established: Websites with moderate authority", color: "#B09CFF" },
+            { label: "Well-Established: Recognized websites with strong authority", color: "#60BA46" },
+            { label: "Very Well-Established: Dominant websites with extensive authority", color: "#14C7DE" }
         ];
+
 
         // Create legend group
         const legend = vis.svg.append("g")
