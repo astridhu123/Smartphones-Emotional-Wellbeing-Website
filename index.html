@@ -110,7 +110,7 @@
                     <br>
                     Furthermore, there is evidence that this overall increase in screentime has followed the public (and especially children) out of the pandemic.
                 </p>
-                <p><strong>We are using our phones more than we ever have before.<strong></p>
+                <p><strong>We are using our phones more than we ever have before.</strong></p>
             </div>
         </div>
     </div>
@@ -168,12 +168,16 @@
             <div class="row mt-3">
                 <div class="col text-center">
                     <button id="prevButton" class="btn btn-primary">Previous</button>
+                    <span id="slideCounter" style="font-weight: bold;">1 of 4</span>
                     <button id="nextButton" class="btn btn-primary">Next</button>
                 </div>
             </div>
             <div class="row d-flex align-items-start">
                 <div class="col-md-6" style="width: 50%;">
-                    <div id="map-container"></div>
+                    <div id="map-container" style="position: relative;">
+                        <button id="resetZoomBtn">Reset Zoom</button>
+                    </div>
+
                     <div class="country_tooltip" id="mapTooltip"></div>
                 </div>
 
@@ -181,7 +185,6 @@
                     <div id="map-description" class="map-text">
                         <p>On average users aged 16 to 64 worldwide spent <b>6 hours and 40 minutes</b> per day on screens across various devices.</p>
                         <p>That equals to <b>46 hours and 40 minutes</b> for average screen time per week among worldwide internet users.</b></p>
-                        <p>South Africans spend <b>9 hours 24 minutes</b> on their screens each day (that’s 2 hours 44 minutes more than the global average).</p>
                     </div>
                 </div>
             </div>
