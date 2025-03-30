@@ -516,6 +516,7 @@ ul li::before {
 }
 
 .filter-card {
+    margin-top: 50px;
     flex: 1;
     background: white;
     padding: 12px;
@@ -531,6 +532,13 @@ ul li::before {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
 }
+
+.filter-container,
+#emotion-description {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
 
 .filter-group label {
     display: flex;
