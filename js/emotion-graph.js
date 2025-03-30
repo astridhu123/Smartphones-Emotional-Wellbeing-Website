@@ -5,7 +5,7 @@ class EmotionGraph {
         this.filteredData = data
         this.chartState = "bubble"
         this.emotionColors = {
-            "Sadness": "#0000FF",
+            "Sadness": "rgba(0, 0, 255, 0.7)",
             "Anger": "#FF0000",
             "Anxiety": "#FFA500",
             "Neutral": "#90EE90",
