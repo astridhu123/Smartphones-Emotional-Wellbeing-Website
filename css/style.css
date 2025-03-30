@@ -160,6 +160,16 @@ ul li::before {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.title-box-1 {
+    background-color: rgba(255, 255, 255, 1); /* Semi-transparent white box */
+    padding: 40px;
+    border-radius: 15px;
+    font-size: 1.2em;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: black;
+}
 .description-box {
     padding: 40px;
     text-align: center;
@@ -217,7 +227,7 @@ ul li::before {
 
 .title-box-3 p {
     font-size: 1.5em;
-    color: #ffffff;
+    color: black;
 }
 .title-box-3 {
     background: rgb(157, 187, 216); /* Gradient background 9DBBD8 3498DBFF */
