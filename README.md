@@ -9,8 +9,6 @@ We would like to acknowledge the following individuals for their significant con
 
 - [**Daria Plakhotna**](https://github.com/plachotnao)
 
-
-
 ## Summary
 
 This project explores the impact of the COVID-19 pandemic on mental health, the role of social media in shaping 
@@ -26,6 +24,7 @@ emotional well-being.
 - [Usage Guide](#Usage-Guide)
 - [Feedback](#Feedback)
 - [Contributions](#Contributions)
+- [Datasets Used](#Datasets-Used)
 - [References](#References)
 
 ## Features
@@ -101,6 +100,12 @@ contribute—whether you're adding new features, fixing bugs, or improving docum
 ### Contribution Guidelines:
 - Please ensure that your code is well-tested (unit tests, integration tests, etc.) and doesn’t break existing features.
 - Respect the project’s licensing and intellectual property rules. Make sure all contributions are original or appropriately credited.
+
+## Datasets Used
+- [Data for "A Pandemic of Mental Health](https://data.mendeley.com/datasets/vmwmn4252k/1)
+- [Popular Mental Health Keywords](www.clicks.so/popular-keywords/mental-health-keywords)
+- [Social Media Usage and Emotional Well-Being](www.kaggle.com/datasets/emirhanai/social-media-usage-and-emotional-well-being)
+- [Students Mental Health Assessments](www.kaggle.com/datasets/sonia22222/students-mental-health-assessments?resource=download)
 
 ## References
 - [Canada’s Report on Youth Mental Health During COVID-19](https://www.canada.ca/en/public-health/services/reports-publications/health-promotion-chronic-disease-prevention-canada-research-policy-practice/vol-44-no-10-2024/assessing-impact-covid-19-pandemic-mental-health-related-hospitalization-youth-canada-interrupted-time-series-analysis.html)
