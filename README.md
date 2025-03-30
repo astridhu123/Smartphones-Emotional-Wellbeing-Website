@@ -51,7 +51,7 @@ A video tutorial is used to clarify the website's features.
     - [d3-cloud Documentation](https://github.com/jasondavies/d3-cloud)
 
 ## Usage Guide
-- [**Project Website**](https://astridhu123.github.io/MentalHealth/](https://astridhu123.github.io/Smartphones-Emotional-Wellbeing-Website/)
+- [**Project Website**](https://astridhu123.github.io/Smartphones-Emotional-Wellbeing-Website/)
 - **Screencast Video**: [Insert URL for Screencast Video 1 here]
 
 ## Feedback
