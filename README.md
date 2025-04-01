@@ -52,7 +52,7 @@ A video tutorial is used to clarify the website's features.
 
 ## Usage Guide
 - [**Project Website**](https://astridhu123.github.io/Smartphones-Emotional-Wellbeing-Website/)
-- **Screencast Video**: [Insert URL for Screencast Video 1 here]
+- [**Screencast Video**](https://drive.google.com/file/d/1VOIYS1B38ww9Pa7IAuLGQDceXoxodrl-/view?usp=sharing)
 
 ## Feedback
 We value your input! If you have suggestions, ideas for new features, or feedback on how to improve the website,
