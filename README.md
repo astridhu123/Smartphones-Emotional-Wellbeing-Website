@@ -31,7 +31,7 @@ emotional well-being.
 - **Pandemic and Emotional Wellbeing BarChart**: This barchart demonstrates the DASS (Depression Anxiety Stress Scale) scores during the start of the pandemic (2019), 
 and the peak of the pandemic (2020). Users can hover over each bar to see more insights regarding the corresponding category. 
 
-- **Map Visualization (Screen Time)**：The map visualizes average screen time per country, with users able to zoom in to explore regional data. Hovering over regions shows detailed statistics.
+- **Map Visualization (Screen Time)**：The map visualizes average screen time per country, with users able to zoom in to explore regional data. By hovering over a country or region, a tooltip appears with detailed statistics, including average daily screen time in hours. The visualization highlights key comparisons. The final section of the visualization provides a world map, allowing users to explore how average screen time has changed globally over the years.
 
 - **Emotion Dashboard**：Displays the most common emotions expressed on social media platforms. Users can toggle between different platforms (e.g., Twitter, Instagram) and emotions, and view data in bar chart format. Both the barchart and bubble chart can be hovered over for more details.
 
