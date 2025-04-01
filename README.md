@@ -36,7 +36,7 @@ emotional well-being.
 
 - **Word Cloud**： The word cloud shows the most searched terms related to mental health, with hover functionality to display search volume for each term.
 
-- **Bar Chart/Scatter Plot**：A toggle feature allows users to switch between a bar chart and scatter plot to compare search volume for mental health-related terms across different website establishment levels.
+- **Bar Chart/Scatter Plot**：A toggle feature allows users to switch between a bar chart and a scatter plot to compare the search volume for mental health-related terms across different website establishment levels, with hover functionality on the scatter plot to display the search volume for each term.
 
 A video tutorial is used to clarify the website's features.
 
