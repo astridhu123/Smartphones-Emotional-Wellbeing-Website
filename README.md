@@ -28,13 +28,17 @@ emotional well-being.
 - [References](#References)
 
 ## Features
+- **Pandemic and Emotional Wellbeing BarChart**: This barchart demonstrates the DASS (Depression Anxiety Stress Scale) scores during the start of the pandemic (2019), 
+and the peak of the pandemic (2020). Users can hover over each bar to see more insights regarding the corresponding category. 
+
 - **Map Visualization (Screen Time)**：The map visualizes average screen time per country, with users able to zoom in to explore regional data. Hovering over regions shows detailed statistics.
 
-- **Emotion Dashboard**：Displays the most common emotions expressed on social media platforms. Users can toggle between different platforms (e.g., Twitter, Instagram) and emotions, and view data in bar chart format.
+- **Emotion Dashboard**：Displays the most common emotions expressed on social media platforms. Users can toggle between different platforms (e.g., Twitter, Instagram) and emotions, and view data in bar chart format. Both the barchart and bubble chart can be hovered over for more details.
 
-- **Worldwide Search Trends**：Interactive line graphs showing the change in mental health-related search terms over time. Users can toggle between different search terms and hover over data points for detailed information.
+- **Worldwide Search Trends**：Interactive line graphs showing the change in mental health-related search terms over time. Users can toggle between different search terms and hover over data points for detailed information. There is also a brushing function located under the graph that will allow users to select a specified time 
+period to view.
 
-- **Word Cloud**： The word cloud shows the most searched terms related to mental health, with hover functionality to display search volume for each term.
+- **Word Cloud**：The word cloud shows the most searched terms related to mental health, with hover functionality to display search volume for each term.
 
 - **Bar Chart/Scatter Plot**：A toggle feature allows users to switch between a bar chart and scatter plot to compare search volume for mental health-related terms across different website establishment levels.
 
@@ -106,6 +110,7 @@ contribute—whether you're adding new features, fixing bugs, or improving docum
 - [Popular Mental Health Keywords](www.clicks.so/popular-keywords/mental-health-keywords)
 - [Social Media Usage and Emotional Well-Being](www.kaggle.com/datasets/emirhanai/social-media-usage-and-emotional-well-being)
 - [Students Mental Health Assessments](www.kaggle.com/datasets/sonia22222/students-mental-health-assessments?resource=download)
+- [Google Search Trends](https://trends.google.com/trends/)
 
 ## References
 - [Canada’s Report on Youth Mental Health During COVID-19](https://www.canada.ca/en/public-health/services/reports-publications/health-promotion-chronic-disease-prevention-canada-research-policy-practice/vol-44-no-10-2024/assessing-impact-covid-19-pandemic-mental-health-related-hospitalization-youth-canada-interrupted-time-series-analysis.html)
